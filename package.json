@@ -1,0 +1,68 @@
+{
+  "name": "solid-social",
+  "version": "0.2.0",
+  "description": "",
+  "source": "./src/index.ts",
+  "main": "./dist/solid-social.umd.js",
+  "module": "./dist/solid-social.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/solid-social.es.js",
+      "require": "./dist/solid-social.umd.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "prepare": "husky install",
+    "build": "rimraf dist && vite build",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/high1/solid-social.git"
+  },
+  "keywords": [
+    "solid",
+    "social"
+  ],
+  "author": "high1 <high1@mailfence.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/high1/solid-social/issues"
+  },
+  "homepage": "https://github.com/high1/solid-social#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-typescript": "^7.16.5",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "babel-preset-solid": "^1.2.6",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-jest-dom": "^3.9.2",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-unicorn": "^39.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.4",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-node-externals": "^3.1.2",
+    "rollup-plugin-ts": "^2.0.4",
+    "typescript": "^4.5.4",
+    "vite": "^2.7.6",
+    "vite-plugin-solid": "^2.1.4",
+    "vite-tsconfig-paths": "^3.3.17"
+  },
+  "dependencies": {
+    "@solid-primitives/intersection-observer": "^1.2.0",
+    "solid-js": "^1.2.6"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*.{js,css,json,md,jsx,yml,yaml}": "prettier --ignore-path .gitignore --write"
+  }
+}
