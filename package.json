@@ -1,6 +1,6 @@
 {
   "name": "solid-social",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "source": "./src/index.ts",
   "main": "./dist/solid-social.umd.js",
@@ -11,7 +11,9 @@
       "require": "./dist/solid-social.umd.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "husky install",
     "build": "rimraf dist && vite build",
