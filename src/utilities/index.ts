@@ -22,16 +22,12 @@ export const getPadding = (aspectRatio: string): Record<'padding-top', string> =
 export const isDefined = <T>(value: T | undefined | null): value is T =>
   value !== undefined && value !== null;
 
-export const createScriptTag = (providerEmbedUrl?: string, providerEmbedScript?: string): void => {
-  const script = document.createElement(`script`);
+export const createStyleSheet = (href: string): void => {
+  const link = document.createElement(`link`);
 
-  script.type = `text/javascript`;
+  link.type = `text/css`;
+  link.rel = `stylesheet`;
+  link.href = href;
 
-  if (providerEmbedUrl) script.src = providerEmbedUrl;
-
-  if (providerEmbedScript) script.textContent = providerEmbedScript;
-
-  script.addEventListener('error', (error) => console.error(`SocialSolidProvider error`, error));
-
-  document.querySelectorAll(`head`)[0].append(script);
+  document.querySelectorAll(`head`)[0].append(link);
 };

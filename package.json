@@ -1,6 +1,6 @@
 {
   "name": "solid-social",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "",
   "source": "./src/index.ts",
   "main": "./dist/solid-social.umd.js",
@@ -36,6 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-typescript": "^7.16.5",
+    "@solid-primitives/script-loader": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "babel-preset-solid": "^1.2.6",

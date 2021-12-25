@@ -1,5 +1,7 @@
 export { CodePen } from 'components/codepen';
 export { CodeSandbox } from 'components/codesandbox';
+export { EggheadLesson } from 'components/egghead';
+export { Gist } from 'components/gist';
 export { Instagram } from 'components/instagram';
 export {
   Tweet,
