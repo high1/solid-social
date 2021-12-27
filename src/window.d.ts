@@ -12,5 +12,11 @@ declare global {
         process: () => void;
       };
     };
+    LI: unknown;
+    LIRenderAll: () => void;
+    PinUtils: {
+      build: () => void;
+    };
+    tiktok: unknown;
   }
 }

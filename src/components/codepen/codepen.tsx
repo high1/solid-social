@@ -1,5 +1,6 @@
 import { JSX, mergeProps } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
+import { createTestId } from 'utilities';
 
 export type CodePenProperties = {
   /** CodePen id */
@@ -30,7 +31,7 @@ export const CodePen = (properties: CodePenProperties): JSX.Element => {
   return (
     <GeneralObserver height={properties_.height}>
       <iframe
-        data-testid="codepen"
+        {...createTestId('codepen')}
         title={`codepen-${properties_.codePenId}`}
         class="codepen-solid-social"
         height={properties_.height}

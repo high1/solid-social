@@ -1,6 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
 import { handleTwttrLoad } from 'components/twitter/utilities';
+import { createTestId } from 'utilities';
 
 export type TwitterListProperties = {
   /** Twitter username */
@@ -18,10 +19,10 @@ export type TwitterListProperties = {
 export const TwitterList = (properties: TwitterListProperties): JSX.Element => {
   const properties_ = mergeProps({ theme: 'light', width: '498px', height: undefined }, properties);
   return (
-    <GeneralObserver onEnter={() => handleTwttrLoad()}>
+    <GeneralObserver onEnter={handleTwttrLoad}>
       <div style={{ overflow: 'auto' }}>
         <a
-          data-testid="twitter-list"
+          {...createTestId('twitter-list')}
           class="twitter-timeline twitter-timeline-solid-social"
           data-theme={properties_.theme}
           data-width={properties_.width}

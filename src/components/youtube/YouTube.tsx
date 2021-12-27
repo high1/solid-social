@@ -1,6 +1,6 @@
 import { Component, mergeProps } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
-import { getPadding } from 'utilities';
+import { createTestId, getPadding } from 'utilities';
 
 export interface YouTubeProperties {
   /** YouTube id */
@@ -55,7 +55,7 @@ export const YouTube: Component<YouTubeProperties> = (properties) => {
         }}
       >
         <iframe
-          data-testid="youtube"
+          {...createTestId('youtube')}
           title={`youTube-${properties_.youTubeId ?? properties_.youTubePlaylistId ?? ''}`}
           src={source}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

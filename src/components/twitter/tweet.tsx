@@ -1,6 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
 import { handleTwttrLoad } from 'components/twitter/utilities';
+import { createTestId } from 'utilities';
 
 export type TweetProperties = {
   /** Tweet link */
@@ -23,14 +24,14 @@ export const Tweet = (properties: TweetProperties): JSX.Element => {
     properties
   );
   return (
-    <GeneralObserver onEnter={() => handleTwttrLoad()}>
+    <GeneralObserver onEnter={handleTwttrLoad}>
       <div
-        data-testid="twitter-tweet"
+        {...createTestId('twitter-tweet')}
         class="twitter-tweet-solid-social"
         style={{ overflow: 'auto' }}
       >
         <blockquote
-          className="twitter-tweet"
+          class="twitter-tweet"
           data-theme={properties_.theme}
           data-align={properties_.align}
           data-conversation={properties_.hideConversation ? 'none' : ''}

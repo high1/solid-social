@@ -1,6 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
 import { handleTwttrLoad } from 'components/twitter/utilities';
+import { createTestId } from 'utilities';
 
 export type TwitterFollowButtonProperties = {
   /** Twitter username */
@@ -23,9 +24,9 @@ export const TwitterFollowButton = (properties: TwitterFollowButtonProperties): 
     properties
   );
   return (
-    <GeneralObserver onEnter={() => handleTwttrLoad()}>
+    <GeneralObserver onEnter={handleTwttrLoad}>
       <a
-        data-testid="twitter-follow-button"
+        {...createTestId('twitter-follow-button')}
         href={`https://twitter.com/${properties_.username}?ref_src=twsrc%5Etfw`}
         class="twitter-follow-button twitter-follow-button-solid-social"
         data-show-count={properties_.showFollowers}

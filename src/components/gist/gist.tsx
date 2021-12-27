@@ -2,7 +2,7 @@ import { createEffect, JSX } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { createScriptLoader } from '@solid-primitives/script-loader';
 import { GeneralObserver } from 'components/general-observer';
-import { createStyleSheet } from 'utilities';
+import { createStyleSheet, createTestId } from 'utilities';
 
 export type GistProperties = {
   /** Gist link */
@@ -54,7 +54,11 @@ export const Gist = (properties: GistProperties): JSX.Element => {
   return (
     <GeneralObserver>
       {!gistResponse.gist.isLoading && (
-        <div data-testid="gist" className="gist-solid-social" innerHTML={gistResponse.gist.div} />
+        <div
+          {...createTestId('gist')}
+          class="gist-solid-social"
+          innerHTML={gistResponse.gist.div}
+        />
       )}
     </GeneralObserver>
   );

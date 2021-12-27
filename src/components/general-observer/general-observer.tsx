@@ -1,6 +1,6 @@
 import { Component, createEffect, createSignal, mergeProps } from 'solid-js';
 import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
-import { isDefined } from 'utilities';
+import { createTestId, isDefined } from 'utilities';
 
 type GeneralObserverProperties = {
   /** Fires when IntersectionObserver enters viewport */
@@ -33,7 +33,7 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
   });
 
   return (
-    <div ref={setDivReference} data-testid="general-observer" class="solid-social">
+    <div ref={setDivReference} {...createTestId('general-observer" class="solid-social')}>
       {isChildVisible() ? (
         properties_.children
       ) : (

@@ -1,5 +1,5 @@
 import { JSX } from 'solid-js';
-import { getPadding } from 'utilities';
+import { createTestId, getPadding } from 'utilities';
 import { GeneralObserver } from 'components/general-observer';
 
 export type EggheadLessonProperties = {
@@ -18,7 +18,7 @@ export const EggheadLesson = (properties: EggheadLessonProperties): JSX.Element 
       }}
     >
       <iframe
-        data-testid="egghead-lesson"
+        {...createTestId('egghead-lesson')}
         title={`egghead-${properties.lessonId}`}
         src={`https://egghead.io/lessons/${properties.lessonId}/embed`}
         allow="autoplay; fullscreen"

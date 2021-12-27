@@ -1,6 +1,7 @@
 import { JSX } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
 import { handleInstagrmLoad } from 'components/instagram/utilities';
+import { createTestId } from 'utilities';
 
 export type InstagramProperties = {
   /** Instagram id */
@@ -8,10 +9,10 @@ export type InstagramProperties = {
 };
 
 export const Instagram = (properties: InstagramProperties): JSX.Element => (
-  <GeneralObserver onEnter={() => handleInstagrmLoad()}>
+  <GeneralObserver onEnter={handleInstagrmLoad}>
     <blockquote
-      data-testid="instagram"
-      className="instagram-media instagram-mdx-embed"
+      {...createTestId('instagram')}
+      class="instagram-media instagram-solid-social"
       data-instgrm-version="12"
     >
       <a href={`https://instagram.com/p/${properties.instagramId}`}>

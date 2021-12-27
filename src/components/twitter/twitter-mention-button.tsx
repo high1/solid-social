@@ -1,6 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
 import { handleTwttrLoad } from 'components/twitter/utilities';
+import { createTestId } from 'utilities';
 
 export type TwitterMentionButtonProperties = {
   /** Twitter username */
@@ -17,9 +18,9 @@ export const TwitterMentionButton = (properties: TwitterMentionButtonProperties)
     properties
   );
   return (
-    <GeneralObserver onEnter={() => handleTwttrLoad()}>
+    <GeneralObserver onEnter={handleTwttrLoad}>
       <a
-        data-testid="twitter-mention-button"
+        {...createTestId('twitter-mention-button')}
         href={`https://twitter.com/intent/tweet?screen_name=${properties_.username}&ref_src=twsrc%5Etfw`}
         class="twitter-mention-button twitter-mention-button-solid-social"
         data-size={properties_.size}

@@ -1,5 +1,6 @@
 import { JSX } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
+import { createTestId } from 'utilities';
 
 export type CodeSandboxProperties = {
   /** CodeSandbox id */
@@ -9,9 +10,9 @@ export type CodeSandboxProperties = {
 export const CodeSandbox = (properties: CodeSandboxProperties): JSX.Element => (
   <GeneralObserver>
     <iframe
-      data-testid="codesandbox"
+      {...createTestId('codesandbox')}
       title={`codeSandbox-${properties.codeSandboxId}`}
-      className="codesandbox-solid-social"
+      class="codesandbox-solid-social"
       src={`https://codesandbox.io/embed/${properties.codeSandboxId}`}
       allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
