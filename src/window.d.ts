@@ -4,7 +4,7 @@ declare global {
   interface Window {
     twttr: {
       widgets: {
-        load: (element: NodeListOf<Element>) => void;
+        load: (element: Element | NodeListOf<Element> | null) => void;
       };
     };
     instgrm: {

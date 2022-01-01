@@ -28,9 +28,12 @@ export const Buzzsprout = (properties: BuzzsproutProperties): JSX.Element => {
             {...createTestId('buzzsprout')}
             class="buzzsprout-solid-social"
             title={`buzzsprout-${properties_.buzzsproutId}`}
-            src={`https://www.buzzsprout.com/${properties_.buzzsproutId}?client_source=admin&amp;iframe=true`}
+            src={`https://www.buzzsprout.com/${properties_.buzzsproutId}?client_source=small_player&amp;iframe=true`}
             width={properties_.width}
             height={properties_.height}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            scrolling="no"
           />
         </div>
       </GeneralObserver>

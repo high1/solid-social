@@ -58,8 +58,7 @@ export const YouTube: Component<YouTubeProperties> = (properties) => {
           {...createTestId('youtube')}
           title={`youTube-${properties_.youTubeId ?? properties_.youTubePlaylistId ?? ''}`}
           src={source}
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture"
           style={{
             position: 'absolute',
             top: 0,

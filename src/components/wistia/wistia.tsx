@@ -30,10 +30,8 @@ export const Wistia = (properties: WistiaProperties): JSX.Element => {
     properties
   );
 
-  handleWistiaLoad();
-
   return (
-    <GeneralObserver>
+    <GeneralObserver onEnter={handleWistiaLoad}>
       <div
         className="wistia-solid-social"
         style={{
@@ -50,7 +48,6 @@ export const Wistia = (properties: WistiaProperties): JSX.Element => {
           title={`wistia-${properties_.videoId}`}
           allow={`autoplay; ${properties_.allowfullscreen ? 'fullscreen' : ''}`}
           class="wistia-solid-social-iframe"
-          allowfullscreen={properties_.allowfullscreen}
           style={{
             position: 'absolute',
             top: 0,

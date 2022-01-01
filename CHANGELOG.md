@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.5.0]
+
+- add ListenNotesEpisode for podcasts
+- code cleanup
+- fixed Twitter component hot reload
+
 ### [0.4.0]
 
 - ported rest of the components, AirTable, Buzzsprout, Cinnamon, Figma, Flickr, Lbry, LinkedIn,

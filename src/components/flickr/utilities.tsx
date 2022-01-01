@@ -1,13 +1,14 @@
+import { createSignal } from 'solid-js';
 import { createScriptLoader } from '@solid-primitives/script-loader';
 
-let isFlickrScriptAdded = false;
-export const flickrClasses = [`.flickr-embed`].join(`,`);
-const flickrEmbedUrl = `//embedr.flickr.com/assets/client-code.js`;
+const [isFlickrScriptAdded, setFlickrScriptAdded] = createSignal(false);
+export const flickrClasses = ['.flickr-embed'].join(',');
+const flickrEmbedUrl = '//embedr.flickr.com/assets/client-code.js';
 
 export const handleFlickrLoad = (): { status: string } => {
-  if (document.querySelector(flickrClasses) && !isFlickrScriptAdded) {
+  if (document.querySelector(flickrClasses) && !isFlickrScriptAdded()) {
     createScriptLoader({ src: flickrEmbedUrl });
-    isFlickrScriptAdded = true;
+    setFlickrScriptAdded(true);
     return {
       status: 'createScriptLoader',
     };
