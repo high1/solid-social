@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal, mergeProps, Show } from 'solid-js';
+import { Component, createSignal, mergeProps, onCleanup, onMount } from 'solid-js';
 import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
 import { createTestId, isDefined } from 'utilities';
 
@@ -13,7 +13,7 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
   const properties_ = mergeProps({ height: 0 }, properties);
   const [observerReference, setObserverReference] = createSignal<HTMLDivElement>();
   const [isChildVisible, setIsChildVisible] = createSignal(false);
-  const [add] = createIntersectionObserver(
+  const [add, { remove }] = createIntersectionObserver(
     [],
     ([entry]) => {
       if (entry.intersectionRatio > 0) {
@@ -27,9 +27,13 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
       threshold: 0,
     }
   );
-  createEffect(() => {
+  onMount(() => {
     const reference = observerReference();
     isDefined<HTMLDivElement>(reference) && add(reference);
+    onCleanup(() => {
+      const reference = observerReference();
+      isDefined<HTMLDivElement>(reference) && add(reference);
+    });
   });
 
   return (
@@ -38,17 +42,14 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
       class="solid-social-observer"
       {...createTestId('general-observer')}
     >
-      <Show
-        when={isChildVisible()}
-        fallback={
-          <div
-            class="solid-social-placeholder"
-            style={{ height: properties_.height, width: '100%' }}
-          />
-        }
-      >
-        {properties_.children}
-      </Show>
+      {isChildVisible() ? (
+        properties_.children
+      ) : (
+        <div
+          class="solid-social-placeholder"
+          style={{ height: properties_.height, width: '100%' }}
+        />
+      )}
     </div>
   );
 };
