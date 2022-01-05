@@ -11,7 +11,7 @@ type GeneralObserverProperties = {
 
 export const GeneralObserver: Component<GeneralObserverProperties> = (properties) => {
   const properties_ = mergeProps({ height: 0 }, properties);
-  const [divReference, setDivReference] = createSignal<HTMLDivElement>();
+  const [observerReference, setObserverReference] = createSignal<HTMLDivElement>();
   const [isChildVisible, setIsChildVisible] = createSignal(false);
   const [add] = createIntersectionObserver(
     [],
@@ -28,27 +28,27 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
     }
   );
   createEffect(() => {
-    const reference = divReference();
+    const reference = observerReference();
     isDefined<HTMLDivElement>(reference) && add(reference);
   });
 
   return (
-    <Show
-      when={isChildVisible()}
-      fallback={
-        <div
-          class="solid-social-placeholder"
-          style={{ height: properties_.height, width: '100%' }}
-        />
-      }
+    <div
+      ref={setObserverReference}
+      class="solid-social-observer"
+      {...createTestId('general-observer')}
     >
-      <div
-        ref={setDivReference}
-        class="solid-social-observer"
-        {...createTestId('general-observer')}
+      <Show
+        when={isChildVisible()}
+        fallback={
+          <div
+            class="solid-social-placeholder"
+            style={{ height: properties_.height, width: '100%' }}
+          />
+        }
       >
         {properties_.children}
-      </div>
-    </Show>
+      </Show>
+    </div>
   );
 };
