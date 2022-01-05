@@ -1,6 +1,6 @@
 import { Component, createSignal, mergeProps, onCleanup, onMount } from 'solid-js';
 import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
-import { createTestId, isDefined } from 'utilities';
+import { createTestId } from 'utilities';
 
 type GeneralObserverProperties = {
   /** Fires when IntersectionObserver enters viewport */
@@ -11,7 +11,7 @@ type GeneralObserverProperties = {
 
 export const GeneralObserver: Component<GeneralObserverProperties> = (properties) => {
   const properties_ = mergeProps({ height: 0 }, properties);
-  const [observerReference, setObserverReference] = createSignal<HTMLDivElement>();
+  let observerReference!: HTMLDivElement;
   const [isChildVisible, setIsChildVisible] = createSignal(false);
   const [add, { remove }] = createIntersectionObserver(
     [],
@@ -27,18 +27,14 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
       threshold: 0,
     }
   );
-  onMount(() => {
-    const reference = observerReference();
-    isDefined<HTMLDivElement>(reference) && add(reference);
-    onCleanup(() => {
-      const reference = observerReference();
-      isDefined<HTMLDivElement>(reference) && remove(reference);
-    });
-  });
+
+  onMount(() => add(observerReference));
+
+  onCleanup(() => remove(observerReference));
 
   return (
     <div
-      ref={setObserverReference}
+      ref={observerReference}
       class="solid-social-observer"
       {...createTestId('general-observer')}
     >

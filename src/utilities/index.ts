@@ -19,9 +19,6 @@ export const getPadding = (aspectRatio: string): Record<'padding-top', string> =
   return config[aspectRatio];
 };
 
-export const isDefined = <T>(value: T | undefined | null): value is T =>
-  value !== undefined && value !== null;
-
 export const createStyleSheet = (href: string): void => {
   const link = document.createElement(`link`);
 
