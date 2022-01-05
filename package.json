@@ -1,6 +1,6 @@
 {
   "name": "solid-social",
-  "version": "0.5.2-rc.2",
+  "version": "0.5.2-rc.1",
   "description": "",
   "source": "./src/index.ts",
   "main": "./dist/solid-social.umd.js",
@@ -47,7 +47,6 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.4",
     "prettier": "^2.0.5",
-    "rollup-plugin-node-externals": "^3.1.2",
     "rollup-plugin-ts": "^2.0.5",
     "typescript": "^4.5.4",
     "vite": "^2.7.6",
