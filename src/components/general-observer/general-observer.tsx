@@ -33,7 +33,7 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
   });
 
   return (
-    <div ref={setDivReference} {...createTestId('general-observer" class="solid-social')}>
+    <div ref={setDivReference} class="solid-social" {...createTestId('general-observer')}>
       {isChildVisible() ? (
         properties_.children
       ) : (

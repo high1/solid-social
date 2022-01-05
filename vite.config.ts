@@ -16,13 +16,13 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['solid-js', '@solid-primitives/intersection-observer'],
+      external: ['solid-js', 'solid-js/web'],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          'solid-js': 'SolidJS',
-          '@solid-primitives/intersection-observer': 'SolidPrimitivesIntersectionObserver',
+          'solid-js': 'UWf3TfXW8991ncr1eRyhU8pd',
+          'solid-js/web': 'ghM0x-kRLI4dH2ZmiEXt7t2I',
         },
       },
     },
