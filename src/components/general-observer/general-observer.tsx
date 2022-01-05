@@ -32,7 +32,7 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
     isDefined<HTMLDivElement>(reference) && add(reference);
     onCleanup(() => {
       const reference = observerReference();
-      isDefined<HTMLDivElement>(reference) && add(reference);
+      isDefined<HTMLDivElement>(reference) && remove(reference);
     });
   });
 
