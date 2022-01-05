@@ -1,6 +1,6 @@
 {
   "name": "solid-social",
-  "version": "0.5.2",
+  "version": "0.5.3-rc.0",
   "description": "",
   "source": "./src/index.ts",
   "main": "./dist/solid-social.umd.js",
