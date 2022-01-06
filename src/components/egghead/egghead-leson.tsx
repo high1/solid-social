@@ -10,7 +10,7 @@ export type EggheadLessonProperties = {
 export const EggheadLesson = (properties: EggheadLessonProperties): JSX.Element => (
   <GeneralObserver>
     <div
-      class="egghead-lesson-solid-social"
+      class="egghead-container-solid-social"
       style={{
         position: 'relative',
         width: '100%',
@@ -19,6 +19,7 @@ export const EggheadLesson = (properties: EggheadLessonProperties): JSX.Element 
     >
       <iframe
         {...createTestId('egghead-lesson')}
+        class="egghead-lesson-solid-social"
         title={`egghead-${properties.lessonId}`}
         src={`https://egghead.io/lessons/${properties.lessonId}/embed`}
         allow="autoplay; fullscreen"

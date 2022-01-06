@@ -1,15 +1,21 @@
 import { createScriptLoader } from '@solid-primitives/script-loader';
 
 export const twttrClasses = [
-  '.twitter-tweet',
-  '.twitter-timeline',
-  '.twitter-follow-button',
-  '.twitter-mention-button',
-  '.twitter-hashtag-button',
-].join(',');
+  'twitter-tweet',
+  'twitter-follow-button',
+  'twitter-hashtag-button',
+  'twitter-list',
+  'twitter-mention-button',
+  'twitter-timeline',
+]
+  .map((twttrClass) => `.${twttrClass}-solid-social`)
+  .join(',');
 
 const twttrLoad = (): void =>
-  window.twttr?.widgets?.load?.(document.querySelectorAll(twttrClasses));
+  document
+    .querySelectorAll(twttrClasses)
+    // eslint-disable-next-line unicorn/no-array-for-each
+    .forEach((element) => window.twttr?.widgets?.load?.(element));
 
 export const handleTwttrLoad = (): { status: 'createScriptLoader' | 'twttrLoad' } => {
   if (document.querySelector(twttrClasses) && !window.twttr) {

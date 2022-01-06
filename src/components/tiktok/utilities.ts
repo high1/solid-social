@@ -1,10 +1,10 @@
 import { createScriptLoader } from '@solid-primitives/script-loader';
 
-export const tikTokClassNames = `.tiktok-embed`;
+export const tikTokClass = `.tiktok-solid-social`;
 const tikTokEmbedUrl = `//www.tiktok.com/embed.js`;
 
 export const handleTikTokLoad = (): { status: 'createScriptLoader' | 'tikTokLoad' } => {
-  if (document.querySelector(tikTokClassNames) !== null && !window.tiktok) {
+  if (document.querySelector(tikTokClass) && !window.tiktok) {
     createScriptLoader({ src: tikTokEmbedUrl });
     return {
       status: 'createScriptLoader',

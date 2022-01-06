@@ -23,7 +23,7 @@ export const Buzzsprout = (properties: BuzzsproutProperties): JSX.Element => {
   return (
     <Show when={regex.test(properties_.buzzsproutId)}>
       <GeneralObserver>
-        <div style={{ position: 'relative' }}>
+        <div class="buzzsprout-container-solid-social" style={{ position: 'relative' }}>
           <iframe
             {...createTestId('buzzsprout')}
             class="buzzsprout-solid-social"

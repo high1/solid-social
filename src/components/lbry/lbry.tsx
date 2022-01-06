@@ -16,7 +16,7 @@ export const Lbry = (properties: ILbryProperties): JSX.Element => {
   return (
     <GeneralObserver>
       <div
-        class="lbry-solid-social"
+        class="lbry-container-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -25,6 +25,7 @@ export const Lbry = (properties: ILbryProperties): JSX.Element => {
       >
         <iframe
           {...createTestId('lbry')}
+          class="lbry-solid-social"
           title={`lbry-${properties_.lbryId}`}
           src={`https://lbry.tv/$/embed/${properties_.lbryId}?t=${properties_.skipTo.s}`}
           allow="fullscreen"

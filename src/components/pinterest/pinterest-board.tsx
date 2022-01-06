@@ -30,7 +30,7 @@ export const PinterestBoard = (properties: PinterestBoardProperties): JSX.Elemen
     <GeneralObserver onEnter={handlePinterestBuild}>
       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
       <a
-        class="pinterest-board pinterest-board-solid-social"
+        class="pinterest-board-solid-social"
         {...createTestId('pinterest-board')}
         data-pin-do={`embed${properties_.variant
           .charAt(0)

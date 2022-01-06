@@ -22,7 +22,7 @@ export const TwitterMentionButton = (properties: TwitterMentionButtonProperties)
       <a
         {...createTestId('twitter-mention-button')}
         href={`https://twitter.com/intent/tweet?screen_name=${properties_.username}&ref_src=twsrc%5Etfw`}
-        class="twitter-mention-button twitter-mention-button-solid-social"
+        class="twitter-mention-button-solid-social"
         data-size={properties_.size}
       >{`Tweet to @${properties_.username}`}</a>
     </GeneralObserver>

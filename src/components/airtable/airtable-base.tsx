@@ -21,9 +21,10 @@ export const AirtableBase = (properties: AirtableBaseProperties): JSX.Element =>
   );
   return (
     <GeneralObserver>
-      <div style={{ position: 'relative' }}>
+      <div class="airtable-solid-social" style={{ position: 'relative' }}>
         <iframe
           {...createTestId('airtable-base')}
+          class="airtable-base-solid-social"
           title={`airtable-${properties_.airtableBaseId}`}
           src={`https://airtable.com/embed/${properties_.airtableBaseId}?backgroundColor=green&${
             !properties_.layout ? `` : `layout=${properties_.layout}&`

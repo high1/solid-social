@@ -20,10 +20,10 @@ export const TwitterList = (properties: TwitterListProperties): JSX.Element => {
   const properties_ = mergeProps({ theme: 'light', width: '498px', height: undefined }, properties);
   return (
     <GeneralObserver onEnter={handleTwttrLoad}>
-      <div style={{ overflow: 'auto' }}>
+      <div class="twitter-container-solid-social" style={{ overflow: 'auto' }}>
         <a
           {...createTestId('twitter-list')}
-          class="twitter-timeline twitter-timeline-solid-social"
+          class="twitter-list-solid-social"
           data-theme={properties_.theme}
           data-width={properties_.width}
           data-height={properties_.height}

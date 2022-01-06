@@ -28,7 +28,7 @@ export const Whimsical = (properties: WhimsicalProperties): JSX.Element => {
     <GeneralObserver>
       <div
         {...createTestId('whimsical')}
-        className="whimsical-solid-social"
+        className="whimsical-container-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -37,6 +37,7 @@ export const Whimsical = (properties: WhimsicalProperties): JSX.Element => {
       >
         <iframe
           title={`whimsical-${properties_.diagramId}`}
+          className="whimsical-solid-social"
           src={`https://whimsical.com/embed/${properties_.diagramId}`}
           allowfullscreen
           style={{

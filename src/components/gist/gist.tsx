@@ -1,4 +1,4 @@
-import { createEffect, JSX } from 'solid-js';
+import { JSX, onMount, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { createScriptLoader } from '@solid-primitives/script-loader';
 import { GeneralObserver } from 'components/general-observer';
@@ -27,11 +27,10 @@ export const Gist = (properties: GistProperties): JSX.Element => {
     },
   });
 
-  const root = `//gist.github.com/`;
   const gistId = properties.gistLink.split('/')[1];
-  const gistEmbedScript = `${root}${properties.gistLink}.json?callback=gist_callback_${gistId}`;
+  const gistEmbedScript = `//gist.github.com/${properties.gistLink}.json?callback=gist_callback_${gistId}`;
 
-  createEffect(() => {
+  onMount(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     window[`gist_callback_${gistId}`] = (gist: {
@@ -53,13 +52,13 @@ export const Gist = (properties: GistProperties): JSX.Element => {
 
   return (
     <GeneralObserver>
-      {!gistResponse.gist.isLoading && (
+      <Show when={!gistResponse.gist.isLoading}>
         <div
           {...createTestId('gist')}
           class="gist-solid-social"
           innerHTML={gistResponse.gist.div}
         />
-      )}
+      </Show>
     </GeneralObserver>
   );
 };

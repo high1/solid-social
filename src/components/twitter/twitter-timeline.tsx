@@ -29,7 +29,7 @@ export const TwitterTimeline = (properties: TwitterTimelineProperties): JSX.Elem
       <div style={{ overflow: 'auto' }}>
         <a
           {...createTestId('twitter-timeline')}
-          class="twitter-timeline twitter-timeline-solid-social"
+          class="twitter-timeline-solid-social"
           data-theme={properties_.theme}
           data-width={properties_.width}
           data-height={properties_.height}

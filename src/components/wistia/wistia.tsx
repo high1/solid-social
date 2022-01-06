@@ -33,7 +33,7 @@ export const Wistia = (properties: WistiaProperties): JSX.Element => {
   return (
     <GeneralObserver onEnter={handleWistiaLoad}>
       <div
-        className="wistia-solid-social"
+        className="wistia-container-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -41,13 +41,13 @@ export const Wistia = (properties: WistiaProperties): JSX.Element => {
         }}
       >
         <iframe
+          {...createTestId('wistia')}
+          title={`wistia-${properties_.videoId}`}
+          class="wistia-solid-social"
           src={`https://fast.wistia.net/embed/iframe/${properties_.videoId}${
             properties.autoPlay ? '?autoPlay=true' : ''
           }`}
-          {...createTestId('wistia')}
-          title={`wistia-${properties_.videoId}`}
           allow={`autoplay; ${properties_.allowfullscreen ? 'fullscreen' : ''}`}
-          class="wistia-solid-social-iframe"
           style={{
             position: 'absolute',
             top: 0,

@@ -27,11 +27,11 @@ export const Tweet = (properties: TweetProperties): JSX.Element => {
     <GeneralObserver onEnter={handleTwttrLoad}>
       <div
         {...createTestId('twitter-tweet')}
-        class="twitter-tweet-solid-social"
+        class="twitter-container-solid-social"
         style={{ overflow: 'auto' }}
       >
         <blockquote
-          class="twitter-tweet"
+          class="twitter-tweet-solid-social"
           data-theme={properties_.theme}
           data-align={properties_.align}
           data-conversation={properties_.hideConversation ? 'none' : ''}

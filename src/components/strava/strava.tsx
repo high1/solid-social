@@ -11,7 +11,7 @@ export const Strava = (properties: StravaProperties): JSX.Element => (
   <GeneralObserver>
     <div
       {...createTestId('strava')}
-      class="strava-solid-social"
+      class="strava-container-solid-social"
       style={{
         position: 'relative',
         height: '350px',
@@ -22,7 +22,7 @@ export const Strava = (properties: StravaProperties): JSX.Element => (
     >
       <iframe
         title={`strava-${properties.activityId}`}
-        class="strava-frame-solid-social"
+        class="strava-solid-social"
         height="100%"
         width="100%"
         style={{

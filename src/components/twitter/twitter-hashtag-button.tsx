@@ -22,7 +22,7 @@ export const TwitterHashtagButton = (properties: TwitterHashtagButtonProperties)
       <a
         {...createTestId('twitter-hashtag-button')}
         href={`https://twitter.com/intent/tweet?button_hashtag=${properties_.hashtag}&ref_src=twsrc%5Etfw`}
-        class="twitter-hashtag-button twitter-hashtag-button-solid-social"
+        class="twitter-hashtag-button-solid-social"
         data-size={properties_.size}
       >{`Tweet #${properties_.hashtag}`}</a>
     </GeneralObserver>

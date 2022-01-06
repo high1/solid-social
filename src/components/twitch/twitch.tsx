@@ -48,7 +48,7 @@ export const Twitch = (properties: TwitchProperties): JSX.Element => {
     <GeneralObserver>
       <div
         {...createTestId('twitch')}
-        class="twitch-solid-social"
+        class="twitch-container-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -57,6 +57,7 @@ export const Twitch = (properties: TwitchProperties): JSX.Element => {
       >
         <iframe
           title={title}
+          class="twitch-solid-social"
           src={constructedSourceURL}
           // src={`https://clips.twitch.tv/embed?clip=AlertProductiveStingrayNononoCat&parent=${parent}`}
           allow="autoplay; fullscreen"
