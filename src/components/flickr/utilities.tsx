@@ -5,15 +5,9 @@ const [isFlickrScriptAdded, setFlickrScriptAdded] = createSignal(false);
 export const flickrClasses = ['.flickr-solid-social'].join(',');
 const flickrEmbedUrl = '//embedr.flickr.com/assets/client-code.js';
 
-export const handleFlickrLoad = (): { status: string } => {
+export const handleFlickrLoad = (): void => {
   if (document.querySelector(flickrClasses) && !isFlickrScriptAdded()) {
     createScriptLoader({ src: flickrEmbedUrl });
     setFlickrScriptAdded(true);
-    return {
-      status: 'createScriptLoader',
-    };
   }
-  return {
-    status: 'flickrLoad',
-  };
 };

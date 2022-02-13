@@ -16,11 +16,11 @@ export const Pin = (properties: PinProperties): JSX.Element => {
     <GeneralObserver onEnter={handlePinterestBuild}>
       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
       <a
-        class="pinterest-pin-solid-social"
+        class="pinterest-pin"
         {...createTestId('pin')}
         data-pin-do="embedPin"
         data-pin-width={properties_.size}
-        href={`https://www.pinterest.com/pin/${properties_.pinId}`}
+        href={`//www.pinterest.com/pin/${properties_.pinId}`}
       />
     </GeneralObserver>
   );

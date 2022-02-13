@@ -27,16 +27,16 @@ export const Tweet = (properties: TweetProperties): JSX.Element => {
     <GeneralObserver onEnter={handleTwttrLoad}>
       <div
         {...createTestId('twitter-tweet')}
-        class="twitter-container-solid-social"
+        class="twitter-solid-social"
         style={{ overflow: 'auto' }}
       >
         <blockquote
-          class="twitter-tweet-solid-social"
+          class="twitter-tweet"
           data-theme={properties_.theme}
           data-align={properties_.align}
           data-conversation={properties_.hideConversation ? 'none' : ''}
         >
-          <a href={`https://twitter.com/${properties_.tweetLink}?ref_src=twsrc%5Etfw`}>
+          <a href={`//twitter.com/${properties_.tweetLink}?ref_src=twsrc%5Etfw`}>
             {window?.twttr ? 'Loading' : ''}
           </a>
         </blockquote>

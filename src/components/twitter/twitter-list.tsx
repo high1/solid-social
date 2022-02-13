@@ -20,14 +20,14 @@ export const TwitterList = (properties: TwitterListProperties): JSX.Element => {
   const properties_ = mergeProps({ theme: 'light', width: '498px', height: undefined }, properties);
   return (
     <GeneralObserver onEnter={handleTwttrLoad}>
-      <div class="twitter-container-solid-social" style={{ overflow: 'auto' }}>
+      <div class="twitter-solid-social" style={{ overflow: 'auto' }}>
         <a
           {...createTestId('twitter-list')}
-          class="twitter-list-solid-social"
+          class="twitter-list"
           data-theme={properties_.theme}
           data-width={properties_.width}
           data-height={properties_.height}
-          href={`https://twitter.com/${properties_.username}/lists/${properties_.listName}?ref_src=twsrc%5Etfw`}
+          href={`//twitter.com/${properties_.username}/lists/${properties_.listName}?ref_src=twsrc%5Etfw`}
         >
           {`A Twitter List by @${properties_.username}`}
         </a>

@@ -6,7 +6,7 @@ import { getPadding } from 'components/whimsical/utilities';
 export type WhimsicalProperties = {
   /**
    * Whimsical id. Ex:
-   * - given a public URL: https://whimsical.com/Py4kdjbPzFpRoAPMbUxmaN
+   * - given a public URL: //whimsical.com/Py4kdjbPzFpRoAPMbUxmaN
    * - diagramId will be: Py4kdjbPzFpRoAPMbUxmaN
    */
   diagramId: string;
@@ -28,7 +28,7 @@ export const Whimsical = (properties: WhimsicalProperties): JSX.Element => {
     <GeneralObserver>
       <div
         {...createTestId('whimsical')}
-        className="whimsical-container-solid-social"
+        className="whimsical-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -37,8 +37,8 @@ export const Whimsical = (properties: WhimsicalProperties): JSX.Element => {
       >
         <iframe
           title={`whimsical-${properties_.diagramId}`}
-          className="whimsical-solid-social"
-          src={`https://whimsical.com/embed/${properties_.diagramId}`}
+          className="whimsical"
+          src={`//whimsical.com/embed/${properties_.diagramId}`}
           allowfullscreen
           style={{
             position: 'absolute',

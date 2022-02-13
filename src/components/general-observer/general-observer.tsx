@@ -1,4 +1,4 @@
-import { Component, createSignal, mergeProps, onCleanup, onMount } from 'solid-js';
+import { Component, createSignal, getOwner, mergeProps, runWithOwner, Show } from 'solid-js';
 import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
 import { createTestId } from 'utilities';
 
@@ -9,18 +9,20 @@ type GeneralObserverProperties = {
   height?: number;
 };
 
+export type HTMLEventName = keyof HTMLElementEventMap;
+
 export const GeneralObserver: Component<GeneralObserverProperties> = (properties) => {
   const properties_ = mergeProps({ height: 0 }, properties);
+  const owner = getOwner();
   let observerReference!: HTMLDivElement;
-  const [isChildVisible, setIsChildVisible] = createSignal(false);
-  const [add, { remove }] = createIntersectionObserver(
-    [],
-    ([entry]) => {
-      if (entry.intersectionRatio > 0) {
-        setIsChildVisible(true);
-        properties?.onEnter?.();
-      }
-    },
+  const [isVisible, setVisible] = createSignal(false);
+  createIntersectionObserver(
+    () => [observerReference],
+    ([entry]) =>
+      entry.intersectionRatio > 0 &&
+      setVisible(true) &&
+      owner &&
+      runWithOwner(owner, () => properties_.onEnter?.()),
     {
       root: undefined,
       rootMargin: '400px',
@@ -28,24 +30,23 @@ export const GeneralObserver: Component<GeneralObserverProperties> = (properties
     }
   );
 
-  onMount(() => add(observerReference));
-
-  onCleanup(() => remove(observerReference));
-
   return (
     <div
       ref={observerReference}
-      class="solid-social-observer"
+      class={`observer-solid-social`}
       {...createTestId('general-observer')}
     >
-      {isChildVisible() ? (
-        properties_.children
-      ) : (
-        <div
-          class="solid-social-placeholder"
-          style={{ height: properties_.height, width: '100%' }}
-        />
-      )}
+      <Show
+        when={isVisible()}
+        fallback={
+          <div
+            class="placeholder-solid-social"
+            style={{ height: properties_.height, width: '100%' }}
+          />
+        }
+      >
+        {properties_.children}
+      </Show>
     </div>
   );
 };

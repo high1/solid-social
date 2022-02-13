@@ -27,7 +27,7 @@ export const Vimeo = (properties: VimeoProperties): JSX.Element => {
     <GeneralObserver>
       <div
         {...createTestId('vimeo')}
-        class="vimeo-container-solid-social"
+        class="vimeo-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -36,14 +36,13 @@ export const Vimeo = (properties: VimeoProperties): JSX.Element => {
       >
         <iframe
           title={`vimeo-${properties_.vimeoId}`}
-          class="vimeo-solid-social"
-          src={`https://player.vimeo.com/video/${
+          class="vimeo"
+          src={`//player.vimeo.com/video/${
             properties_.vimeoId
           }?autoplay=${properties_.autoPlay.toString()}#t=${properties_.skipTo.h}h${
             properties_.skipTo.m
           }m${properties_.skipTo.s}s`}
           allow="autoplay; fullscreen"
-          allowfullscreen
           style={{
             position: 'absolute',
             top: 0,

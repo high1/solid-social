@@ -44,7 +44,7 @@ export const Wistia = (properties: WistiaProperties): JSX.Element => {
           {...createTestId('wistia')}
           title={`wistia-${properties_.videoId}`}
           class="wistia-solid-social"
-          src={`https://fast.wistia.net/embed/iframe/${properties_.videoId}${
+          src={`//fast.wistia.net/embed/iframe/${properties_.videoId}${
             properties.autoPlay ? '?autoPlay=true' : ''
           }`}
           allow={`autoplay; ${properties_.allowfullscreen ? 'fullscreen' : ''}`}

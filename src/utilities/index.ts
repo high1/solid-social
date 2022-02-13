@@ -29,14 +29,6 @@ export const createStyleSheet = (href: string): void => {
   document.querySelectorAll(`head`)[0].append(link);
 };
 
-export const createScriptTag = (providerEmbedScript: string): void => {
-  const script = document.createElement(`script`);
-  script.type = `text/javascript`;
-  script.textContent = providerEmbedScript;
-  script.addEventListener('error', (error) => console.error(`SolidSocialError`, error));
-  document.querySelectorAll(`head`)[0].append(script);
-};
-
 export const createTestId = (
   id: string
 ): {

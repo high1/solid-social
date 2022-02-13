@@ -26,14 +26,14 @@ export const TwitterTimeline = (properties: TwitterTimelineProperties): JSX.Elem
   );
   return (
     <GeneralObserver onEnter={handleTwttrLoad}>
-      <div style={{ overflow: 'auto' }}>
+      <div class="twitter-solid-social" style={{ overflow: 'auto' }}>
         <a
           {...createTestId('twitter-timeline')}
-          class="twitter-timeline-solid-social"
+          class="twitter-timeline"
           data-theme={properties_.theme}
           data-width={properties_.width}
           data-height={properties_.height}
-          href={`https://twitter.com/${properties_.username}${
+          href={`//twitter.com/${properties_.username}${
             properties_.showLikes ? `/likes` : ''
           }?ref_src=twsrc%5Etfw`}
         >

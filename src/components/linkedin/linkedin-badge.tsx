@@ -30,7 +30,7 @@ export const LinkedInBadge = (properties: LinkedInProperties): JSX.Element => {
     <GeneralObserver onEnter={handleLinkedInLoad}>
       <div
         {...createTestId('linkedin-badge')}
-        class="LI-profile-badge linkedin-badge-solid-social"
+        class="LI-profile-badge linkedin-badge"
         data-version="v1"
         data-size={properties_.badgeSize}
         data-locale={properties_.locale}
@@ -40,7 +40,7 @@ export const LinkedInBadge = (properties: LinkedInProperties): JSX.Element => {
       >
         <a
           class="LI-simple-link"
-          href={`https://uk.linkedin.com/in/${properties_.username}?trk=profile-badge`}
+          href={`//uk.linkedin.com/in/${properties_.username}?trk=profile-badge`}
         >
           Loading
         </a>

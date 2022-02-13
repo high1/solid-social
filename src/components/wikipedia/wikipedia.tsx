@@ -12,9 +12,15 @@ export type WikipediaProperties = {
 export const Wikipedia = (properties: WikipediaProperties): JSX.Element => {
   const properties_ = mergeProps({ height: 600 }, properties);
 
-  const wikipediaEmbedUrl = `https://en.wikipedia.org/api/rest_v1/page/html/${properties_.wikipediaLink}`;
+  const getWikipediaHtml = async (): Promise<string> => {
+    const response = await fetch(
+      `//en.wikipedia.org/api/rest_v1/page/html/${properties_.wikipediaLink}`
+    );
+    const text = await response.text();
+    return text.replace(/<a rel="mw:WikiLink"/g, '<a target="_blank" rel="mw:WikiLink"');
+  };
 
-  const [wiki] = createResource(() => fetch(wikipediaEmbedUrl).then((response) => response.text()));
+  const [wiki] = createResource(() => properties_.wikipediaLink, getWikipediaHtml);
 
   return (
     <GeneralObserver>
@@ -22,7 +28,7 @@ export const Wikipedia = (properties: WikipediaProperties): JSX.Element => {
         <Suspense fallback="Loading...">
           <iframe
             {...createTestId('wikipedia')}
-            class="wikipedia-solid-social"
+            class="wikipedia"
             title={properties_.wikipediaLink}
             style={{
               width: '100%',
@@ -31,9 +37,7 @@ export const Wikipedia = (properties: WikipediaProperties): JSX.Element => {
                   ? properties_.height
                   : `${properties_.height}px`,
             }}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            srcDoc={wiki().replace(/<a rel="mw:WikiLink"/g, '<a target="_blank" rel="mw:WikiLink"')}
+            srcdoc={wiki()}
           />
         </Suspense>
       </ErrorBoundary>

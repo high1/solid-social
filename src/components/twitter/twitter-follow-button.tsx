@@ -27,8 +27,8 @@ export const TwitterFollowButton = (properties: TwitterFollowButtonProperties): 
     <GeneralObserver onEnter={handleTwttrLoad}>
       <a
         {...createTestId('twitter-follow-button')}
-        href={`https://twitter.com/${properties_.username}?ref_src=twsrc%5Etfw`}
-        class="twitter-follow-button-solid-social"
+        href={`//twitter.com/${properties_.username}?ref_src=twsrc%5Etfw`}
+        class="twitter-follow-button"
         data-show-count={properties_.showFollowers}
         data-show-screen-name={properties_.showUsername}
         data-size={properties_.size}

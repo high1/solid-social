@@ -19,7 +19,7 @@ export const SimplecastEpisode = (properties: SimplecastEpisodeProperties): JSX.
   return (
     <GeneralObserver>
       <div
-        class="simplecast-container-solid-social"
+        class="simplecast-episode-solid-social"
         style={{
           position: 'relative',
           height: '200px',
@@ -28,9 +28,9 @@ export const SimplecastEpisode = (properties: SimplecastEpisodeProperties): JSX.
       >
         <iframe
           {...createTestId('simplecast-episode')}
-          class="simplecast-episode-solid-social"
+          class="simplecast-episode"
           title={`simplecast-${properties_.episodeId}`}
-          src={`https://player.simplecast.com/${properties_.episodeId}${
+          src={`//player.simplecast.com/${properties_.episodeId}${
             properties_.theme === `dark` ? `?dark=true` : ``
           }`}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment

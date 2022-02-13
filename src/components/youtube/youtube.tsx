@@ -38,7 +38,7 @@ export const YouTube: Component<YouTubeProperties> = (properties) => {
 
   const startTime = tH + tM + s;
 
-  const source = `https://www.youtube${properties_.noCookie ? '-nocookie' : ''}.com/embed/${
+  const source = `//www.youtube${properties_.noCookie ? '-nocookie' : ''}.com/embed/${
     properties_.youTubeId
       ? `${properties_.youTubeId}?&autoplay=${properties_.autoPlay.toString()}&start=${startTime}`
       : `&videoseries?list=${properties_.youTubePlaylistId ?? ''}`
@@ -47,7 +47,7 @@ export const YouTube: Component<YouTubeProperties> = (properties) => {
   return (
     <GeneralObserver>
       <div
-        class="youtube-container-solid-social"
+        class="youtube-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -56,8 +56,8 @@ export const YouTube: Component<YouTubeProperties> = (properties) => {
       >
         <iframe
           {...createTestId('youtube')}
+          class="youtube"
           title={`youTube-${properties_.youTubeId ?? properties_.youTubePlaylistId ?? ''}`}
-          class="youtube-solid-social"
           src={source}
           allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture"
           style={{

@@ -53,11 +53,7 @@ export const Gist = (properties: GistProperties): JSX.Element => {
   return (
     <GeneralObserver>
       <Show when={!gistResponse.gist.isLoading}>
-        <div
-          {...createTestId('gist')}
-          class="gist-solid-social"
-          innerHTML={gistResponse.gist.div}
-        />
+        <div {...createTestId('gist')} class="gist" innerHTML={gistResponse.gist.div} />
       </Show>
     </GeneralObserver>
   );

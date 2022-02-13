@@ -21,12 +21,12 @@ export const AirtableBase = (properties: AirtableBaseProperties): JSX.Element =>
   );
   return (
     <GeneralObserver>
-      <div class="airtable-solid-social" style={{ position: 'relative' }}>
+      <div class="airtable-base-solid-social" style={{ position: 'relative' }}>
         <iframe
           {...createTestId('airtable-base')}
-          class="airtable-base-solid-social"
+          class="airtable-base"
           title={`airtable-${properties_.airtableBaseId}`}
-          src={`https://airtable.com/embed/${properties_.airtableBaseId}?backgroundColor=green&${
+          src={`//airtable.com/embed/${properties_.airtableBaseId}?backgroundColor=green&${
             !properties_.layout ? `` : `layout=${properties_.layout}&`
           }viewControls=${properties_.viewControls}`}
           width="100%"

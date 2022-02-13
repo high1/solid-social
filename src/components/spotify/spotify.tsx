@@ -24,8 +24,8 @@ export const Spotify = (properties: SpotifyProperties): JSX.Element => {
       <iframe
         {...createTestId('spotify')}
         title={`spotify-${properties_.spotifyLink}`}
-        class="spotify-solid-social"
-        src={`https://open.spotify.com/embed/${properties.spotifyLink}`}
+        class="spotify"
+        src={`//open.spotify.com/embed/${properties.spotifyLink}`}
         width={properties_.width}
         height={properties_.height}
         allow="encrypted-media"

@@ -32,3 +32,11 @@ export { Whimsical } from 'components/whimsical';
 export { Wikipedia } from 'components/wikipedia';
 export { Wistia } from 'components/wistia';
 export { YouTube } from 'components/youtube';
+
+// Provider
+// export {
+//   MDXContext,
+//   MDXProvider,
+//   SolidSocialProvider,
+//   useMDXComponents,
+// } from 'components/solid-social-provider';

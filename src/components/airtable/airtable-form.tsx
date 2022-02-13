@@ -9,12 +9,12 @@ export type AirtableFormProperties = {
 
 export const AirtableForm = (properties: AirtableFormProperties): JSX.Element => (
   <GeneralObserver>
-    <div class="airtable-solid-social" style={{ position: 'relative' }}>
+    <div class="airtable-form-solid-social" style={{ position: 'relative' }}>
       <iframe
         {...createTestId('airtable-form')}
-        class="airtable-form-solid-social"
+        class="airtable-form"
         title={`airtable-${properties.airtableFormId}`}
-        src={`https://airtable.com/embed/${properties.airtableFormId}?backgroundColor=green`}
+        src={`//airtable.com/embed/${properties.airtableFormId}?backgroundColor=green`}
         width="100%"
         height="533"
         style={{ background: 'transparent', border: '1px solid #ccc' }}

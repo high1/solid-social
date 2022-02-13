@@ -10,7 +10,7 @@ export type CinnamonProperties = {
 export const Cinnamon = (properties: CinnamonProperties): JSX.Element => (
   <GeneralObserver>
     <div
-      class="cinnamon-container-solid-social"
+      class="cinnamon-solid-social"
       style={{
         position: 'relative',
         width: '100%',
@@ -19,9 +19,9 @@ export const Cinnamon = (properties: CinnamonProperties): JSX.Element => (
     >
       <iframe
         {...createTestId('cinnamon')}
-        class="cinnamon-solid-social"
+        class="cinnamon"
         title={`cinnamon-${properties.cinnamonId}`}
-        src={`https://cinnamon.video/embed?v=${properties.cinnamonId}`}
+        src={`//cinnamon.video/embed?v=${properties.cinnamonId}`}
         allow="monetization; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
         style={{

@@ -33,12 +33,12 @@ export const CodePen = (properties: CodePenProperties): JSX.Element => {
       <iframe
         {...createTestId('codepen')}
         title={`codepen-${properties_.codePenId}`}
-        class="codepen-solid-social"
+        class="codepen"
         height={properties_.height}
         style={{
           width: '100%',
         }}
-        src={`https://codepen.io/team/codepen/embed${properties_.clickToLoad ? '/preview' : ''}/${
+        src={`//codepen.io/team/codepen/embed${properties_.clickToLoad ? '/preview' : ''}/${
           properties_.codePenId
         }?height=265&theme-id=${properties_.theme}&default-tab=${properties_.tabs}${
           properties_.editable ? '&editable=true' : ''

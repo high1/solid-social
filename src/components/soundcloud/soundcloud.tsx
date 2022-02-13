@@ -33,11 +33,11 @@ export const SoundCloud = (properties: SoundCloudProperties): JSX.Element => {
       <iframe
         {...createTestId('soundcloud')}
         title={`sound-cloud-${properties_.soundCloudLink}`}
-        class="soundcloud-solid-social"
+        class="soundcloud"
         width={properties_.width}
         height={properties_.height}
         allow="autoplay"
-        src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/${
+        src={`//w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/${
           properties_.soundCloudLink
         }&color=%23${
           properties_.color

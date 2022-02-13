@@ -22,7 +22,7 @@ export const ListenNotesEpisode = (properties: ListenNotesEpisodeProperties): JS
   return (
     <GeneralObserver>
       <div
-        class="listennotes-container-solid-social"
+        class="listennotes-episode-solid-social"
         style={{
           position: 'relative',
           height: properties_.height,
@@ -31,9 +31,9 @@ export const ListenNotesEpisode = (properties: ListenNotesEpisodeProperties): JS
       >
         <iframe
           {...createTestId('listennotes-episode')}
-          class="listennotes-episode-solid-social"
+          class="listennotes-episode"
           title={`listennotes-${properties.episodeId}`}
-          src={`https://www.listennotes.com/podcasts/${properties.episodeId}/embed/`}
+          src={`//www.listennotes.com/podcasts/${properties.episodeId}/embed/`}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           frameborder={0}

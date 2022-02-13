@@ -15,9 +15,7 @@ export const Instagram = (properties: InstagramProperties): JSX.Element => (
       class="instagram-media instagram-solid-social"
       data-instgrm-version="12"
     >
-      <a href={`https://instagram.com/p/${properties.instagramId}`}>
-        {window?.instgrm ? 'Loading' : ''}
-      </a>
+      <a href={`//instagram.com/p/${properties.instagramId}`}>{window?.instgrm ? 'Loading' : ''}</a>
     </blockquote>
   </GeneralObserver>
 );

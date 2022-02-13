@@ -30,7 +30,7 @@ export const PinterestBoard = (properties: PinterestBoardProperties): JSX.Elemen
     <GeneralObserver onEnter={handlePinterestBuild}>
       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
       <a
-        class="pinterest-board-solid-social"
+        class="pinterest-board"
         {...createTestId('pinterest-board')}
         data-pin-do={`embed${properties_.variant
           .charAt(0)
@@ -38,7 +38,7 @@ export const PinterestBoard = (properties: PinterestBoardProperties): JSX.Elemen
         data-pin-board-width={properties_.width}
         data-pin-scale-height={properties_.height}
         data-pin-scale-width={properties_.imageWidth}
-        href={`https://www.pinterest.com/${properties_.pinterestLink}`}
+        href={`//www.pinterest.com/${properties_.pinterestLink}`}
       />
     </GeneralObserver>
   );

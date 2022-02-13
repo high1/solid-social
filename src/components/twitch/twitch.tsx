@@ -34,7 +34,7 @@ export const Twitch = (properties: TwitchProperties): JSX.Element => {
     properties
   );
   const title = properties_.twitchId ? `twitch-${properties_.twitchId}` : `twitch`;
-  const baseUrl = `https://player.twitch.tv/?autoplay=${properties_.autoPlay.toString()}&t=${
+  const baseUrl = `//player.twitch.tv/?autoplay=${properties_.autoPlay.toString()}&t=${
     properties_.skipTo.h
   }h${properties_.skipTo.m}m${properties_.skipTo.s}s&parent=${properties_.parent}`;
   const constructedSourceURL = constructTwitchURL(
@@ -48,7 +48,7 @@ export const Twitch = (properties: TwitchProperties): JSX.Element => {
     <GeneralObserver>
       <div
         {...createTestId('twitch')}
-        class="twitch-container-solid-social"
+        class="twitch-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -57,11 +57,9 @@ export const Twitch = (properties: TwitchProperties): JSX.Element => {
       >
         <iframe
           title={title}
-          class="twitch-solid-social"
+          class="twitch"
           src={constructedSourceURL}
-          // src={`https://clips.twitch.tv/embed?clip=AlertProductiveStingrayNononoCat&parent=${parent}`}
           allow="autoplay; fullscreen"
-          allowfullscreen
           style={{
             position: 'absolute',
             top: 0,

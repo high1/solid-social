@@ -29,12 +29,12 @@ export const Figma = (properties: FigmaProperties): JSX.Element => {
         <iframe
           {...createTestId('figma')}
           title={`figma-${properties_.title}`}
-          class="figma-solid-social"
+          class="figma"
           height={properties_.height}
           style={{
             width: '100%',
           }}
-          src={`https://www.figma.com/embed?embed_host=mdx-embed&url=https://www.figma.com/${properties_.url}`}
+          src={`//www.figma.com/embed?embed_host=mdx-embed&url=https://www.figma.com/${properties_.url}`}
           allowfullscreen
         />
       </GeneralObserver>

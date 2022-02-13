@@ -12,8 +12,8 @@ export const CodeSandbox = (properties: CodeSandboxProperties): JSX.Element => (
     <iframe
       {...createTestId('codesandbox')}
       title={`codeSandbox-${properties.codeSandboxId}`}
-      class="codesandbox-solid-social"
-      src={`https://codesandbox.io/embed/${properties.codeSandboxId}`}
+      class="codesandbox"
+      src={`//codesandbox.io/embed/${properties.codeSandboxId}`}
       allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       style={{

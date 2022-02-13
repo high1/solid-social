@@ -11,10 +11,10 @@ export type PinterestFollowButtonProperties = {
 export const PinterestFollowButton = (properties: PinterestFollowButtonProperties): JSX.Element => (
   <GeneralObserver onEnter={handlePinterestBuild}>
     <a
-      class="pinterest-follow-button-solid-social"
+      class="pinterest-follow-button"
       {...createTestId('pinterest-follow-button')}
       data-pin-do="buttonFollow"
-      href={`https://www.pinterest.com/${properties.username}/`}
+      href={`//www.pinterest.com/${properties.username}/`}
     >
       {`Follow @${properties.username}`}
     </a>
