@@ -1,6 +1,6 @@
-import { JSX, mergeProps } from 'solid-js';
+import { createEffect, JSX, mergeProps, on } from 'solid-js';
 import { GeneralObserver } from 'components/general-observer';
-import { handleTwttrLoad } from 'components/twitter/utilities';
+import { handleTwttrLoad, handleTwttrUpdate } from 'components/twitter/utilities';
 import { createTestId } from 'utilities';
 
 export type TweetProperties = {
@@ -23,10 +23,20 @@ export const Tweet = (properties: TweetProperties): JSX.Element => {
     },
     properties
   );
+  const tweetLinkSplit = properties_.tweetLink.split('/');
+  const tweetId = tweetLinkSplit[tweetLinkSplit.length - 1];
+  createEffect(
+    on(
+      () => properties_.theme,
+      () => handleTwttrUpdate(tweetId, `#twitter-tweet-${tweetId}`, properties_),
+      { defer: true }
+    )
+  );
   return (
     <GeneralObserver onEnter={handleTwttrLoad}>
       <div
         {...createTestId('twitter-tweet')}
+        id={`twitter-tweet-${tweetId}`}
         class="twitter-solid-social"
         style={{ overflow: 'auto' }}
       >
