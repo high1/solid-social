@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import dts from 'vite-dts';
+import ts from 'rollup-plugin-ts';
 
 export default defineConfig({
-  plugins: [solid(), tsconfigPaths(), dts()],
+  plugins: [solid(), tsconfigPaths(), ts({ transpileOnly: true })],
   build: {
     lib: {
       entry: 'src/index.ts',
@@ -13,12 +13,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['solid-js', 'solid-js/web'],
-      output: {
-        sourcemapExcludeSources: true,
-      },
     },
-    sourcemap: true,
     target: 'esnext',
-    minify: false,
   },
 });
