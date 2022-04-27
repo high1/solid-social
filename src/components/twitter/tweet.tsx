@@ -27,7 +27,12 @@ export const Tweet = (properties: TweetProperties): JSX.Element => {
   const tweetId = tweetLinkSplit[tweetLinkSplit.length - 1];
   createEffect(
     on(
-      () => properties_.theme,
+      () => [
+        properties_.align,
+        properties_.theme,
+        properties_.hideConversation,
+        properties_.tweetLink,
+      ],
       () => handleTwttrUpdate(tweetId, `#twitter-tweet-${tweetId}`, properties_),
       { defer: true }
     )

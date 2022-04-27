@@ -30,9 +30,12 @@ export const handleTwttrUpdate = (
   targetElement: string,
   options: { theme: 'light' | 'dark' }
 ): void => {
-  const element = document.querySelector(targetElement);
+  const element = document.querySelector<HTMLDivElement>(targetElement);
   if (element) {
-    element.innerHTML = '';
+    element.innerHTML = 'Loading...';
+    element.style.display = 'flex';
+    element.style.justifyContent = 'center';
+    element.style.alignItems = 'center';
     void window.twttr?.widgets?.createTweet(tweetId, element, options);
   }
 };
