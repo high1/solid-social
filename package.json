@@ -1,6 +1,6 @@
 {
   "name": "solid-social",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "",
   "source": "./src/index.ts",
   "main": "./dist/solid-social.cjs.js",
