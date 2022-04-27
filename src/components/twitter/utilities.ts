@@ -32,7 +32,7 @@ export const handleTwttrUpdate = (
 ): void => {
   const element = document.querySelector<HTMLDivElement>(targetElement);
   if (element) {
-    element.innerHTML = '';
+    while (element.firstChild) element.firstChild.remove();
     void window.twttr?.widgets?.createTweet(tweetId, element, options);
   }
 };
