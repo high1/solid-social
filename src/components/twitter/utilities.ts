@@ -32,7 +32,6 @@ export const handleTwttrUpdate = (
 ): void => {
   const element = document.querySelector<HTMLDivElement>(targetElement);
   if (element) {
-    element.innerHTML = 'Loading...';
     element.style.display = 'flex';
     element.style.justifyContent = 'center';
     element.style.alignItems = 'center';
