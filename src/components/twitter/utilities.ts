@@ -32,9 +32,7 @@ export const handleTwttrUpdate = (
 ): void => {
   const element = document.querySelector<HTMLDivElement>(targetElement);
   if (element) {
-    element.style.display = 'flex';
-    element.style.justifyContent = 'center';
-    element.style.alignItems = 'center';
+    element.innerHTML = '';
     void window.twttr?.widgets?.createTweet(tweetId, element, options);
   }
 };
