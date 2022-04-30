@@ -33,7 +33,7 @@ export const Tweet = (properties: TweetProperties): JSX.Element => {
         properties_.hideConversation,
         properties_.tweetLink,
       ],
-      () => handleTwttrUpdate(tweetId, `#twitter-tweet-${tweetId}`, properties_),
+      () => handleTwttrUpdate(`iframe[data-tweet-id="${tweetId}"]`, properties_),
       { defer: true }
     )
   );

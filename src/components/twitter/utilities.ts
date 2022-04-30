@@ -26,13 +26,10 @@ export const handleTwttrLoad = (): void => {
 };
 
 export const handleTwttrUpdate = (
-  tweetId: string,
   targetElement: string,
   options: { theme: 'light' | 'dark' }
 ): void => {
-  const element = document.querySelector<HTMLDivElement>(targetElement);
-  if (element) {
-    while (element.firstChild) element.firstChild.remove();
-    void window.twttr?.widgets?.createTweet(tweetId, element, options);
-  }
+  const tweet = document.querySelector<HTMLIFrameElement>(targetElement);
+  const source = tweet?.getAttribute('src');
+  source && tweet?.setAttribute('src', source.replace(/theme=.*?&/, `theme=${options.theme}&`));
 };
