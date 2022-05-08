@@ -52,7 +52,7 @@ export const Tweet = (properties: TweetProperties): JSX.Element => {
           data-conversation={properties_.hideConversation ? 'none' : ''}
         >
           <a href={`//twitter.com/${properties_.tweetLink}?ref_src=twsrc%5Etfw`}>
-            {window?.twttr ? 'Loading' : ''}
+            {window.twttr && ''}
           </a>
         </blockquote>
       </div>

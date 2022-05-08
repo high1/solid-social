@@ -27,9 +27,9 @@ export const handleTwttrLoad = (): void => {
 
 export const handleTwttrUpdate = (
   targetElement: string,
-  options: { theme: 'light' | 'dark' }
+  { theme }: { theme: 'light' | 'dark' }
 ): void => {
   const tweet = document.querySelector<HTMLIFrameElement>(targetElement);
   const source = tweet?.getAttribute('src');
-  source && tweet?.setAttribute('src', source.replace(/theme=.*?&/, `theme=${options.theme}&`));
+  if (source) tweet?.setAttribute('src', source.replace(/theme=.*?&/, `theme=${theme}&`));
 };

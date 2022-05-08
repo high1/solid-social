@@ -12,5 +12,5 @@ export const handlePinterestBuild = (): void => {
     createScriptLoader({ src: pinterestEmbedScript });
     return;
   }
-  window?.PinUtils?.build();
+  window.PinUtils?.build();
 };

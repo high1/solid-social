@@ -25,7 +25,7 @@ export const Wikipedia = (properties: WikipediaProperties): JSX.Element => {
   return (
     <GeneralObserver>
       <ErrorBoundary fallback={(error) => <div>{String(error)}</div>}>
-        <Suspense fallback="Loading...">
+        <Suspense fallback="">
           <iframe
             {...createTestId('wikipedia')}
             class="wikipedia"

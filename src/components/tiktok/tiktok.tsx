@@ -17,7 +17,7 @@ export const TikTok = (properties: TikTokProperties): JSX.Element => (
       data-video-id={properties.tikTokId.split('/').pop()}
     >
       <section>
-        <a href={`//tiktok.com/${properties.tikTokId}`}>{!window?.tiktok ? 'Loading' : ''}</a>
+        <a href={`//tiktok.com/${properties.tikTokId}`}>{!window.tiktok && ''}</a>
       </section>
     </blockquote>
   </GeneralObserver>
