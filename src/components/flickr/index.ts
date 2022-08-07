@@ -1,1 +1,1 @@
-export { Flickr } from 'components/flickr/flickr';
+export { Flickr } from './flickr';

@@ -62,14 +62,6 @@
             "allowExpressions": true
           }
         ],
-        "import/no-unresolved": [
-          "error",
-          {
-            "ignore": [
-              "^node:.*$"
-            ]
-          }
-        ],
         "unicorn/filename-case": [
           "error",
           {
@@ -97,16 +89,11 @@
         "import/resolver": {
           "node": {},
           "typescript": {}
-        },
-        "import/core-modules": [
-          "virtual:windi.css",
-          "virtual:windi-devtools"
-        ]
+        }
       },
       "env": {
         "es2020": true,
-        "browser": true,
-        "jest": true
+        "browser": true
       }
     }
   ]

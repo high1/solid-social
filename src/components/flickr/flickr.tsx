@@ -1,7 +1,7 @@
 import { JSX } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { handleFlickrLoad } from 'components/flickr/utilities';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { handleFlickrLoad } from './utilities';
+import { createTestId } from '../../utilities';
 
 export type FlickrProperties = {
   /** Flickr image link*/

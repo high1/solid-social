@@ -1,7 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { handleLinkedInLoad } from 'components/linkedin/utilities';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { handleLinkedInLoad } from './utilities';
+import { createTestId } from '../../utilities';
 
 export type LinkedInProperties = {
   /** LinkedIn username */

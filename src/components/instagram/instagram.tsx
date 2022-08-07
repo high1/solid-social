@@ -1,7 +1,7 @@
 import { JSX } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { handleInstagrmLoad } from 'components/instagram/utilities';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { handleInstagrmLoad } from './utilities';
+import { createTestId } from '../../utilities';
 
 export type InstagramProperties = {
   /** Instagram id */

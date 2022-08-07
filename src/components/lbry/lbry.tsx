@@ -1,5 +1,5 @@
 import { JSX, mergeProps } from 'solid-js';
-import { createTestId, getPadding } from 'utilities';
+import { createTestId, getPadding } from '../../utilities';
 import { GeneralObserver } from '../general-observer';
 
 export interface ILbryProperties {

@@ -1,7 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { handleTwttrLoad } from 'components/twitter/utilities';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { handleTwttrLoad } from './utilities';
+import { createTestId } from '../../utilities';
 
 export type TwitterListProperties = {
   /** Twitter username */

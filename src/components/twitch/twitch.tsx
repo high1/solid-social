@@ -1,7 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { constructTwitchURL } from 'components/twitch/utilities';
-import { createTestId, getPadding } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { constructTwitchURL } from './utilities';
+import { createTestId, getPadding } from '../../utilities';
 
 export type TwitchProperties = {
   /** Domain(s) that will be embedding Twitch. You must have one parent key for each domain your site uses. */
@@ -35,7 +35,7 @@ export const Twitch = (properties: TwitchProperties): JSX.Element => {
   );
   const title = properties_.twitchId ? `twitch-${properties_.twitchId}` : `twitch`;
   const baseUrl = `//player.twitch.tv/?autoplay=${properties_.autoPlay.toString()}&t=${
-    properties_.skipTo.h
+    properties_.skipTo.h || 0
   }h${properties_.skipTo.m}m${properties_.skipTo.s}s&parent=${properties_.parent}`;
   const constructedSourceURL = constructTwitchURL(
     properties_.twitchId,

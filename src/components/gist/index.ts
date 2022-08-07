@@ -1,1 +1,1 @@
-export { Gist } from 'components/gist/gist';
+export { Gist } from './gist';

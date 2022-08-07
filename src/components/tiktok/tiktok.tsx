@@ -1,7 +1,7 @@
 import { JSX } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { handleTikTokLoad } from 'components/tiktok/utilities';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { handleTikTokLoad } from './utilities';
+import { createTestId } from '../../utilities';
 
 export type TikTokProperties = {
   /** TikTok id */

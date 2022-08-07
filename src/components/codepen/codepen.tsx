@@ -1,6 +1,6 @@
 import { JSX, mergeProps } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { createTestId } from '../../utilities';
 
 export type CodePenProperties = {
   /** CodePen id */
@@ -40,7 +40,7 @@ export const CodePen = (properties: CodePenProperties): JSX.Element => {
         }}
         src={`//codepen.io/team/codepen/embed${properties_.clickToLoad ? '/preview' : ''}/${
           properties_.codePenId
-        }?height=265&theme-id=${properties_.theme}&default-tab=${properties_.tabs}${
+        }?height=265&theme-id=${properties_.theme}&default-tab=${properties_.tabs.toString()}${
           properties_.editable ? '&editable=true' : ''
         }`}
         allowfullscreen

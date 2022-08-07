@@ -1,7 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { createTestId } from 'utilities';
-import { getPadding } from 'components/whimsical/utilities';
+import { GeneralObserver } from '../general-observer';
+import { createTestId } from '../../utilities';
+import { getPadding } from './utilities';
 
 export type WhimsicalProperties = {
   /**
@@ -28,7 +28,7 @@ export const Whimsical = (properties: WhimsicalProperties): JSX.Element => {
     <GeneralObserver>
       <div
         {...createTestId('whimsical')}
-        className="whimsical-solid-social"
+        class="whimsical-solid-social"
         style={{
           position: 'relative',
           width: '100%',
@@ -37,7 +37,7 @@ export const Whimsical = (properties: WhimsicalProperties): JSX.Element => {
       >
         <iframe
           title={`whimsical-${properties_.diagramId}`}
-          className="whimsical"
+          class="whimsical"
           src={`//whimsical.com/embed/${properties_.diagramId}`}
           allowfullscreen
           style={{

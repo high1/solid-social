@@ -1,6 +1,6 @@
 import { JSX, mergeProps, Show } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { createTestId } from '../../utilities';
 
 export type FigmaProperties = {
   /** Height for the iFrame. Defaults to 450px */

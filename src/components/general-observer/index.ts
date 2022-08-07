@@ -1,1 +1,1 @@
-export { GeneralObserver } from 'components/general-observer/general-observer';
+export { GeneralObserver } from '../general-observer/general-observer';

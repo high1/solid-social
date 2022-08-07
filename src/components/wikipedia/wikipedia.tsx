@@ -1,6 +1,6 @@
 import { createResource, ErrorBoundary, JSX, mergeProps, Suspense } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { createTestId } from '../../utilities';
 
 export type WikipediaProperties = {
   /** Wikipedia page link */

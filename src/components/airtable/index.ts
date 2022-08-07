@@ -1,2 +1,2 @@
-export { AirtableBase } from 'components/airtable/airtable-base';
-export { AirtableForm } from 'components/airtable/airtable-form';
+export { AirtableBase } from './airtable-base';
+export { AirtableForm } from './airtable-form';

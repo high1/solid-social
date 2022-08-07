@@ -1,1 +1,1 @@
-export { EggheadLesson } from 'components/egghead/egghead-leson';
+export { EggheadLesson } from './egghead-leson';

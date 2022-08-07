@@ -1,1 +1,1 @@
-export { Strava } from 'components/strava/strava';
+export { Strava } from './strava';

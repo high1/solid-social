@@ -1,3 +1,3 @@
-export { Pin } from 'components/pinterest/pin';
-export { PinterestBoard } from 'components/pinterest/pinterest-board';
-export { PinterestFollowButton } from 'components/pinterest/pinterest-follow-button';
+export { Pin } from './pin';
+export { PinterestBoard } from './pinterest-board';
+export { PinterestFollowButton } from './pinterest-follow-button';

@@ -1,1 +1,1 @@
-export { TikTok } from 'components/tiktok/tiktok';
+export { TikTok } from './tiktok';

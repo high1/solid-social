@@ -1,6 +1,6 @@
 import { JSX, mergeProps } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { createTestId, getPadding } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { createTestId, getPadding } from '../../utilities';
 
 export type VimeoProperties = {
   /** Vimeo id */
@@ -39,7 +39,7 @@ export const Vimeo = (properties: VimeoProperties): JSX.Element => {
           class="vimeo"
           src={`//player.vimeo.com/video/${
             properties_.vimeoId
-          }?autoplay=${properties_.autoPlay.toString()}#t=${properties_.skipTo.h}h${
+          }?autoplay=${properties_.autoPlay.toString()}#t=${properties_.skipTo.h || 0}h${
             properties_.skipTo.m
           }m${properties_.skipTo.s}s`}
           allow="autoplay; fullscreen"

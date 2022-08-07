@@ -1,1 +1,1 @@
-export { Spotify } from 'components/spotify/spotify';
+export { Spotify } from './spotify';
