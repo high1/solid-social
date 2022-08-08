@@ -37,8 +37,8 @@
   "homepage": "https://github.com/high1/solid-social#readme",
   "devDependencies": {
     "@rollup/plugin-replace": "^4.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
-    "@typescript-eslint/parser": "^5.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.4.0",
@@ -64,5 +64,6 @@
   "lint-staged": {
     "*.{ts,tsx}": "eslint --fix",
     "*.{js,css,json,md,jsx,yml,yaml}": "prettier --ignore-path .gitignore --write"
-  }
+  },
+  "packageManager": "pnpm@7.9.0"
 }
