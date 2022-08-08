@@ -1,1 +1,1 @@
-export { YouTube } from 'components/youtube/youtube';
+export { YouTube } from './youtube';

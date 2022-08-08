@@ -1,1 +1,1 @@
-export { Vimeo } from 'components/vimeo/vimeo';
+export { Vimeo } from './vimeo';

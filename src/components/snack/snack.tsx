@@ -1,7 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
 import { createScriptLoader } from '@solid-primitives/script-loader';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from 'utilities';
+import { createTestId } from '../../utilities';
 
 const scriptUrl = '//snack.expo.io/embed.js';
 

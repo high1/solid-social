@@ -34,5 +34,5 @@ export const createTestId = (
 ): {
   'data-testid'?: string;
 } => ({
-  ...(import.meta.env?.NODE_ENV === 'test' && { 'data-testid': id }),
+  ...('solid-social-test-mode' && { 'data-testid': id }),
 });

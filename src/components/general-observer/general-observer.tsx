@@ -1,6 +1,6 @@
-import { Component, createSignal, getOwner, mergeProps, runWithOwner, Show } from 'solid-js';
+import { createSignal, getOwner, mergeProps, ParentComponent, runWithOwner, Show } from 'solid-js';
 import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
-import { createTestId } from 'utilities';
+import { createTestId } from '../../utilities';
 
 type GeneralObserverProperties = {
   /** Fires when IntersectionObserver enters viewport */
@@ -11,7 +11,7 @@ type GeneralObserverProperties = {
 
 export type HTMLEventName = keyof HTMLElementEventMap;
 
-export const GeneralObserver: Component<GeneralObserverProperties> = (properties) => {
+export const GeneralObserver: ParentComponent<GeneralObserverProperties> = (properties) => {
   const properties_ = mergeProps({ height: 0 }, properties);
   const owner = getOwner();
   let observerReference!: HTMLDivElement;

@@ -1,1 +1,1 @@
-export { CodeSandbox } from 'components/codesandbox/codesandbox';
+export { CodeSandbox } from './codesandbox';

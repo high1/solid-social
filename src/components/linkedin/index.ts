@@ -1,1 +1,1 @@
-export { LinkedInBadge } from 'components/linkedin/linkedin-badge';
+export { LinkedInBadge } from './linkedin-badge';

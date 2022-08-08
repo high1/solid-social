@@ -1,1 +1,1 @@
-export { Wistia } from 'components/wistia/wistia';
+export { Wistia } from './wistia';

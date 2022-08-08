@@ -1,1 +1,1 @@
-export { Figma } from 'components/figma/figma';
+export { Figma } from './figma';

@@ -1,6 +1,6 @@
 import { Component, mergeProps } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { createTestId, getPadding } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { createTestId, getPadding } from '../../utilities';
 
 export interface YouTubeProperties {
   /** YouTube id */
@@ -33,7 +33,7 @@ export const YouTube: Component<YouTubeProperties> = (properties) => {
   );
   const { h, m, s } = properties_.skipTo;
 
-  const tH = h * 60;
+  const tH = (h || 0) * 60;
   const tM = m * 60;
 
   const startTime = tH + tM + s;

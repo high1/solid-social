@@ -1,1 +1,1 @@
-export { Cinnamon } from 'components/cinnamon/cinnamon';
+export { Cinnamon } from './cinnamon';

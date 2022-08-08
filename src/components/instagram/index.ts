@@ -1,1 +1,1 @@
-export { Instagram } from 'components/instagram/instagram';
+export { Instagram } from './instagram';

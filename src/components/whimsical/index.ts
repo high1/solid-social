@@ -1,1 +1,1 @@
-export { Whimsical } from 'components/whimsical/whimsical';
+export { Whimsical } from './whimsical';

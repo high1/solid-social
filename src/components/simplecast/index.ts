@@ -1,1 +1,1 @@
-export { SimplecastEpisode } from 'components/simplecast/simplecast-episode';
+export { SimplecastEpisode } from './simplecast-episode';

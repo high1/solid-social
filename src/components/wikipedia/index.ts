@@ -1,1 +1,1 @@
-export { Wikipedia } from 'components/wikipedia/wikipedia';
+export { Wikipedia } from './wikipedia';

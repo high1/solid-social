@@ -1,7 +1,7 @@
 import { JSX, mergeProps } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { createTestId, getPadding } from 'utilities';
-import { handleWistiaLoad } from 'components/wistia/utilities';
+import { GeneralObserver } from '../general-observer';
+import { createTestId, getPadding } from '../../utilities';
+import { handleWistiaLoad } from './utilities';
 
 export type WistiaProperties = {
   /** Video ID, extracted from Wistia URL. */
@@ -33,7 +33,7 @@ export const Wistia = (properties: WistiaProperties): JSX.Element => {
   return (
     <GeneralObserver onEnter={handleWistiaLoad}>
       <div
-        className="wistia-container-solid-social"
+        class="wistia-container-solid-social"
         style={{
           position: 'relative',
           width: '100%',

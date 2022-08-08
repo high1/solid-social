@@ -1,1 +1,1 @@
-export { SoundCloud } from 'components/soundcloud/soundcloud';
+export { SoundCloud } from './soundcloud';

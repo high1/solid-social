@@ -1,1 +1,1 @@
-export { Twitch } from 'components/twitch/twitch';
+export { Twitch } from './twitch';

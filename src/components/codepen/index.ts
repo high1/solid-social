@@ -1,1 +1,1 @@
-export { CodePen } from 'components/codepen/codepen';
+export { CodePen } from './codepen';

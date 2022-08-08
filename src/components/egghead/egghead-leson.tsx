@@ -1,6 +1,6 @@
 import { JSX } from 'solid-js';
-import { createTestId, getPadding } from 'utilities';
-import { GeneralObserver } from 'components/general-observer';
+import { createTestId, getPadding } from '../../utilities';
+import { GeneralObserver } from '../general-observer';
 
 export type EggheadLessonProperties = {
   /** Egghead lesson */

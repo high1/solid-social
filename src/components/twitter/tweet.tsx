@@ -1,7 +1,7 @@
 import { createEffect, JSX, mergeProps, on } from 'solid-js';
-import { GeneralObserver } from 'components/general-observer';
-import { handleTwttrLoad, handleTwttrUpdate } from 'components/twitter/utilities';
-import { createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { handleTwttrLoad, handleTwttrUpdate } from './utilities';
+import { createTestId } from '../../utilities';
 
 export type TweetProperties = {
   /** Tweet link */
@@ -20,7 +20,7 @@ export const Tweet = (properties: TweetProperties): JSX.Element => {
       theme: 'light',
       align: 'left',
       hideConversation: false,
-    },
+    } as const,
     properties
   );
   const tweetLinkSplit = properties_.tweetLink.split('/');

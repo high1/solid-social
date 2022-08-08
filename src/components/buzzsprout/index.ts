@@ -1,1 +1,1 @@
-export { Buzzsprout } from 'components/buzzsprout/buzzsprout';
+export { Buzzsprout } from './buzzsprout';

@@ -1,8 +1,8 @@
 import { JSX, onMount, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { createScriptLoader } from '@solid-primitives/script-loader';
-import { GeneralObserver } from 'components/general-observer';
-import { createStyleSheet, createTestId } from 'utilities';
+import { GeneralObserver } from '../general-observer';
+import { createStyleSheet, createTestId } from '../../utilities';
 
 export type GistProperties = {
   /** Gist link */

@@ -1,1 +1,1 @@
-export { ListenNotesEpisode } from 'components/listennotes/listennotes-episode';
+export { ListenNotesEpisode } from './listennotes-episode';
