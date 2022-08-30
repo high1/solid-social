@@ -1,9 +1,10 @@
-import { JSX, mergeProps } from 'solid-js';
+import { createMemo, mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { constructTwitchURL } from './utilities';
-import { createTestId, getPadding } from '../../utilities';
+import { getPadding } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type TwitchProperties = {
+export type TwitchProps = {
   /** Domain(s) that will be embedding Twitch. You must have one parent key for each domain your site uses. */
   parent: string;
   /** Twitch id */
@@ -22,8 +23,8 @@ export type TwitchProperties = {
   collection?: string;
 };
 
-export const Twitch = (properties: TwitchProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const Twitch: Component<TwitchProps> = (props) => {
+  const props_ = mergeProps(
     {
       parent: 'localhost',
       autoPlay: false,
@@ -31,23 +32,22 @@ export const Twitch = (properties: TwitchProperties): JSX.Element => {
       channel: '',
       collection: '',
     },
-    properties
+    props
   );
-  const title = properties_.twitchId ? `twitch-${properties_.twitchId}` : `twitch`;
-  const baseUrl = `//player.twitch.tv/?autoplay=${properties_.autoPlay.toString()}&t=${
-    properties_.skipTo.h || 0
-  }h${properties_.skipTo.m}m${properties_.skipTo.s}s&parent=${properties_.parent}`;
-  const constructedSourceURL = constructTwitchURL(
-    properties_.twitchId,
-    properties_.channel,
-    properties_.collection,
-    baseUrl
+  const title = createMemo(() => (props_.twitchId ? `twitch-${props_.twitchId}` : `twitch`));
+  const baseUrl = createMemo(
+    () =>
+      `//player.twitch.tv/?autoplay=${props_.autoPlay.toString()}&t=${props_.skipTo.h || 0}h${
+        props_.skipTo.m
+      }m${props_.skipTo.s}s&parent=${props_.parent}`
+  );
+  const constructedSourceURL = createMemo(() =>
+    constructTwitchURL(props_.twitchId, props_.channel, props_.collection, baseUrl())
   );
 
   return (
     <GeneralObserver>
       <div
-        {...createTestId('twitch')}
         class="twitch-solid-social"
         style={{
           position: 'relative',
@@ -56,9 +56,9 @@ export const Twitch = (properties: TwitchProperties): JSX.Element => {
         }}
       >
         <iframe
-          title={title}
+          title={title()}
           class="twitch"
-          src={constructedSourceURL}
+          src={constructedSourceURL()}
           allow="autoplay; fullscreen"
           style={{
             position: 'absolute',

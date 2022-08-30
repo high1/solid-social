@@ -1,8 +1,9 @@
-import { Component, mergeProps } from 'solid-js';
+import { createMemo, mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId, getPadding } from '../../utilities';
+import { getPadding } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export interface YouTubeProperties {
+export interface YouTubeProps {
   /** YouTube id */
   youTubeId?: string;
   /** YouTube Playlist id */
@@ -21,28 +22,30 @@ export interface YouTubeProperties {
   noCookie?: boolean;
 }
 
-export const YouTube: Component<YouTubeProperties> = (properties) => {
-  const properties_ = mergeProps(
+export const YouTube: Component<YouTubeProps> = (props) => {
+  const props_ = mergeProps(
     {
       aspectRatio: '16:9',
       autoPlay: false,
       skipTo: { h: 0, m: 0, s: 0 },
       noCookie: false,
-    },
-    properties
+    } as const,
+    props
   );
-  const { h, m, s } = properties_.skipTo;
 
-  const tH = (h || 0) * 60;
-  const tM = m * 60;
+  const startTime = createMemo(() => {
+    const { h, m, s } = props_.skipTo;
+    return (h || 0) * 60 + m * 60 + s;
+  });
 
-  const startTime = tH + tM + s;
-
-  const source = `//www.youtube${properties_.noCookie ? '-nocookie' : ''}.com/embed/${
-    properties_.youTubeId
-      ? `${properties_.youTubeId}?&autoplay=${properties_.autoPlay.toString()}&start=${startTime}`
-      : `&videoseries?list=${properties_.youTubePlaylistId ?? ''}`
-  }`;
+  const source = createMemo(
+    () =>
+      `//www.youtube${props_.noCookie ? '-nocookie' : ''}.com/embed/${
+        props_.youTubeId
+          ? `${props_.youTubeId}?&autoplay=${props_.autoPlay.toString()}&start=${startTime()}`
+          : `&videoseries?list=${props_.youTubePlaylistId ?? ''}`
+      }`
+  );
 
   return (
     <GeneralObserver>
@@ -51,14 +54,13 @@ export const YouTube: Component<YouTubeProperties> = (properties) => {
         style={{
           position: 'relative',
           width: '100%',
-          ...getPadding(properties_.aspectRatio),
+          ...getPadding(props_.aspectRatio),
         }}
       >
         <iframe
-          {...createTestId('youtube')}
           class="youtube"
-          title={`youTube-${properties_.youTubeId ?? properties_.youTubePlaylistId ?? ''}`}
-          src={source}
+          title={`youtube-${props_.youTubeId ?? props_.youTubePlaylistId ?? ''}`}
+          src={source()}
           allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture"
           style={{
             position: 'absolute',

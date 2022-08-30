@@ -1,22 +1,20 @@
-import { JSX } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { handlePinterestBuild } from './utilities';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type PinterestFollowButtonProperties = {
+export type PinterestFollowButtonProps = {
   /** Pinterest username */
   username: string;
 };
 
-export const PinterestFollowButton = (properties: PinterestFollowButtonProperties): JSX.Element => (
+export const PinterestFollowButton: Component<PinterestFollowButtonProps> = (props) => (
   <GeneralObserver onEnter={handlePinterestBuild}>
     <a
       class="pinterest-follow-button"
-      {...createTestId('pinterest-follow-button')}
       data-pin-do="buttonFollow"
-      href={`//www.pinterest.com/${properties.username}/`}
+      href={`//www.pinterest.com/${props.username}/`}
     >
-      {`Follow @${properties.username}`}
+      {`Follow @${props.username}`}
     </a>
   </GeneralObserver>
 );

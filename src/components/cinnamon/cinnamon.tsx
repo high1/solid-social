@@ -1,13 +1,13 @@
-import { JSX } from 'solid-js';
-import { createTestId, getPadding } from '../../utilities';
+import { getPadding } from '../../utilities';
 import { GeneralObserver } from '../general-observer';
+import type { Component } from 'solid-js';
 
-export type CinnamonProperties = {
+export type CinnamonProps = {
   /** Cinnamon id */
   cinnamonId: string;
 };
 
-export const Cinnamon = (properties: CinnamonProperties): JSX.Element => (
+export const Cinnamon: Component<CinnamonProps> = (props) => (
   <GeneralObserver>
     <div
       class="cinnamon-solid-social"
@@ -18,10 +18,9 @@ export const Cinnamon = (properties: CinnamonProperties): JSX.Element => (
       }}
     >
       <iframe
-        {...createTestId('cinnamon')}
         class="cinnamon"
-        title={`cinnamon-${properties.cinnamonId}`}
-        src={`//cinnamon.video/embed?v=${properties.cinnamonId}`}
+        title={`cinnamon-${props.cinnamonId}`}
+        src={`//cinnamon.video/embed?v=${props.cinnamonId}`}
         allow="monetization; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
         style={{

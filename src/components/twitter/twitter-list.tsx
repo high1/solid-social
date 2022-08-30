@@ -1,9 +1,9 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { handleTwttrLoad } from './utilities';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type TwitterListProperties = {
+export type TwitterListProps = {
   /** Twitter username */
   username: string;
   /** The Twitter list name */
@@ -16,20 +16,19 @@ export type TwitterListProperties = {
   height?: number | string;
 };
 
-export const TwitterList = (properties: TwitterListProperties): JSX.Element => {
-  const properties_ = mergeProps({ theme: 'light', width: '498px', height: undefined }, properties);
+export const TwitterList: Component<TwitterListProps> = (props) => {
+  const props_ = mergeProps({ theme: 'light', width: '498px', height: undefined }, props);
   return (
     <GeneralObserver onEnter={handleTwttrLoad}>
       <div class="twitter-solid-social" style={{ overflow: 'auto' }}>
         <a
-          {...createTestId('twitter-list')}
           class="twitter-list"
-          data-theme={properties_.theme}
-          data-width={properties_.width}
-          data-height={properties_.height}
-          href={`//twitter.com/${properties_.username}/lists/${properties_.listName}?ref_src=twsrc%5Etfw`}
+          data-theme={props_.theme}
+          data-width={props_.width}
+          data-height={props_.height}
+          href={`//twitter.com/${props_.username}/lists/${props_.listName}?ref_src=twsrc%5Etfw`}
         >
-          {`A Twitter List by @${properties_.username}`}
+          {`A Twitter List by @${props_.username}`}
         </a>
       </div>
     </GeneralObserver>

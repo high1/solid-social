@@ -1,8 +1,8 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type ListenNotesEpisodeProperties = {
+export type ListenNotesEpisodeProps = {
   /** ListenNotes Episode */
   episodeId: string;
   /* width of the iframe: default to 100% */
@@ -11,13 +11,13 @@ export type ListenNotesEpisodeProperties = {
   height?: string;
 };
 
-export const ListenNotesEpisode = (properties: ListenNotesEpisodeProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const ListenNotesEpisode: Component<ListenNotesEpisodeProps> = (props) => {
+  const props_ = mergeProps(
     {
       width: '100%',
       height: '180px',
     },
-    properties
+    props
   );
   return (
     <GeneralObserver>
@@ -25,15 +25,14 @@ export const ListenNotesEpisode = (properties: ListenNotesEpisodeProperties): JS
         class="listennotes-episode-solid-social"
         style={{
           position: 'relative',
-          height: properties_.height,
-          width: properties_.width,
+          height: props_.height,
+          width: props_.width,
         }}
       >
         <iframe
-          {...createTestId('listennotes-episode')}
           class="listennotes-episode"
-          title={`listennotes-${properties.episodeId}`}
-          src={`//www.listennotes.com/podcasts/${properties.episodeId}/embed/`}
+          title={`listennotes-${props.episodeId}`}
+          src={`//www.listennotes.com/podcasts/${props.episodeId}/embed/`}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           frameborder={0}

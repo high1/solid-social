@@ -1,9 +1,9 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { handleTwttrLoad } from './utilities';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type TwitterTimelineProperties = {
+export type TwitterTimelineProps = {
   /** Twitter username */
   username: string;
   /** Show Tweets liked by the username */
@@ -16,28 +16,27 @@ export type TwitterTimelineProperties = {
   height?: number | string;
 };
 
-export const TwitterTimeline = (properties: TwitterTimelineProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const TwitterTimeline: Component<TwitterTimelineProps> = (props) => {
+  const props_ = mergeProps(
     {
       theme: 'light',
       width: '498px',
     },
-    properties
+    props
   );
   return (
     <GeneralObserver onEnter={handleTwttrLoad}>
       <div class="twitter-solid-social" style={{ overflow: 'auto' }}>
         <a
-          {...createTestId('twitter-timeline')}
           class="twitter-timeline"
-          data-theme={properties_.theme}
-          data-width={properties_.width}
-          data-height={properties_.height}
-          href={`//twitter.com/${properties_.username}${
-            properties_.showLikes ? `/likes` : ''
+          data-theme={props_.theme}
+          data-width={props_.width}
+          data-height={props_.height}
+          href={`//twitter.com/${props_.username}${
+            props_.showLikes ? `/likes` : ''
           }?ref_src=twsrc%5Etfw`}
         >
-          {`Tweets by @${properties_.username}`}
+          {`Tweets by @${props_.username}`}
         </a>
       </div>
     </GeneralObserver>

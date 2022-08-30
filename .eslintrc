@@ -2,25 +2,12 @@
   "root": true,
   "env": {
     "browser": true,
-    "es6": true,
-    "node": true
+    "es2022": true
   },
   "extends": [
     "eslint:recommended",
-    "plugin:unicorn/recommended",
     "plugin:prettier/recommended"
   ],
-  "rules": {
-    "unicorn/filename-case": [
-      "error",
-      {
-        "cases": {
-          "camelCase": true,
-          "kebabCase": true
-        }
-      }
-    ]
-  },
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -29,7 +16,6 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2020,
     "sourceType": "module"
   },
   "ignorePatterns": [
@@ -48,11 +34,11 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:solid/recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:import/typescript",
-        "plugin:unicorn/recommended",
         "plugin:prettier/recommended"
       ],
       "rules": {
@@ -61,38 +47,23 @@
           {
             "allowExpressions": true
           }
-        ],
-        "unicorn/filename-case": [
-          "error",
-          {
-            "cases": {
-              "pascalCase": true,
-              "kebabCase": true
-            }
-          }
-        ],
-        "unicorn/no-array-reduce": "off",
-        "unicorn/no-unreadable-array-destructuring": "off"
+        ]
       },
       "parserOptions": {
-        "project": [
-          "./tsconfig.json"
-        ],
+        "project": "tsconfig.json",
         "sourceType": "module",
         "ecmaFeatures": {
-          "impliedStrict": true,
           "jsx": true
-        },
-        "ecmaVersion": 2020
+        }
       },
       "settings": {
         "import/resolver": {
-          "node": {},
+          // "node": {},
           "typescript": {}
         }
       },
       "env": {
-        "es2020": true,
+        "es2022": true,
         "browser": true
       }
     }

@@ -1,8 +1,8 @@
-import { JSX, mergeProps, Show } from 'solid-js';
+import { mergeProps, Show } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type BuzzsproutProperties = {
+export type BuzzsproutProps = {
   /* Buzzsprout id: podcastId/episodeId`*/
   buzzsproutId: string;
   /* width of the iframe: default to 100% */
@@ -11,25 +11,24 @@ export type BuzzsproutProperties = {
   height?: string;
 };
 
-export const Buzzsprout = (properties: BuzzsproutProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const Buzzsprout: Component<BuzzsproutProps> = (props) => {
+  const props_ = mergeProps(
     {
       width: '100%',
       height: '200',
     },
-    properties
+    props
   );
   return (
-    <Show when={/^\d{7}\/\d{7}-[\W\w]+/.test(properties_.buzzsproutId)}>
+    <Show when={/^\d{7}\/\d{7}-[\W\w]+/.test(props_.buzzsproutId)}>
       <GeneralObserver>
         <div class="buzzsprout-solid-social" style={{ position: 'relative' }}>
           <iframe
-            {...createTestId('buzzsprout')}
             class="buzzsprout"
-            title={`buzzsprout-${properties_.buzzsproutId}`}
-            src={`//www.buzzsprout.com/${properties_.buzzsproutId}?client_source=small_player&amp;iframe=true`}
-            width={properties_.width}
-            height={properties_.height}
+            title={`buzzsprout-${props_.buzzsproutId}`}
+            src={`//www.buzzsprout.com/${props_.buzzsproutId}?client_source=small_player&amp;iframe=true`}
+            width={props_.width}
+            height={props_.height}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             scrolling="no"

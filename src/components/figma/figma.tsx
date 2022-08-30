@@ -1,8 +1,8 @@
-import { JSX, mergeProps, Show } from 'solid-js';
+import { mergeProps, Show } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type FigmaProperties = {
+export type FigmaProps = {
   /** Height for the iFrame. Defaults to 450px */
   height?: number;
   /**
@@ -15,26 +15,25 @@ export type FigmaProperties = {
   url: string;
 };
 
-export const Figma = (properties: FigmaProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const Figma: Component<FigmaProps> = (propes) => {
+  const props_ = mergeProps(
     {
       height: 450,
     },
-    properties
+    propes
   );
   const regex = /(file|proto)\/([\dA-Za-z]{22,128})(?:\/.*)?$/;
   return (
-    <Show when={regex.test(properties_.url)}>
-      <GeneralObserver height={properties_.height}>
+    <Show when={regex.test(props_.url)}>
+      <GeneralObserver height={props_.height}>
         <iframe
-          {...createTestId('figma')}
-          title={`figma-${properties_.title}`}
+          title={`figma-${props_.title}`}
           class="figma"
-          height={properties_.height}
+          height={props_.height}
           style={{
             width: '100%',
           }}
-          src={`//www.figma.com/embed?embed_host=mdx-embed&url=https://www.figma.com/${properties_.url}`}
+          src={`//www.figma.com/embed?embed_host=mdx-embed&url=https://www.figma.com/${props_.url}`}
           allowfullscreen
         />
       </GeneralObserver>

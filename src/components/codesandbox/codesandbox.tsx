@@ -1,26 +1,24 @@
-import { JSX } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type CodeSandboxProperties = {
+export type CodeSandboxProps = {
   /** CodeSandbox id */
   codeSandboxId: string;
 };
 
-export const CodeSandbox = (properties: CodeSandboxProperties): JSX.Element => (
+export const CodeSandbox: Component<CodeSandboxProps> = (props) => (
   <GeneralObserver>
     <iframe
-      {...createTestId('codesandbox')}
-      title={`codeSandbox-${properties.codeSandboxId}`}
+      title={`codeSandbox-${props.codeSandboxId}`}
       class="codesandbox"
-      src={`//codesandbox.io/embed/${properties.codeSandboxId}`}
+      src={`//codesandbox.io/embed/${props.codeSandboxId}`}
       allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       style={{
         width: '100%',
         height: '500px',
         border: 0,
-        borderRadius: '4px',
+        'border-radius': '4px',
         overflow: 'hidden',
       }}
     />

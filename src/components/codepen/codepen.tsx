@@ -1,8 +1,8 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type CodePenProperties = {
+export type CodePenProps = {
   /** CodePen id */
   codePenId: string;
   /** Height for the iFrame */
@@ -17,8 +17,8 @@ export type CodePenProperties = {
   theme?: string | 'light' | 'dark' | 'default';
 };
 
-export const CodePen = (properties: CodePenProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const CodePen: Component<CodePenProps> = (props) => {
+  const props_ = mergeProps(
     {
       height: 500,
       tabs: 'result',
@@ -26,22 +26,21 @@ export const CodePen = (properties: CodePenProperties): JSX.Element => {
       editable: false,
       theme: 'default',
     },
-    properties
+    props
   );
   return (
-    <GeneralObserver height={properties_.height}>
+    <GeneralObserver height={props_.height}>
       <iframe
-        {...createTestId('codepen')}
-        title={`codepen-${properties_.codePenId}`}
+        title={`codepen-${props_.codePenId}`}
         class="codepen"
-        height={properties_.height}
+        height={props_.height}
         style={{
           width: '100%',
         }}
-        src={`//codepen.io/team/codepen/embed${properties_.clickToLoad ? '/preview' : ''}/${
-          properties_.codePenId
-        }?height=265&theme-id=${properties_.theme}&default-tab=${properties_.tabs.toString()}${
-          properties_.editable ? '&editable=true' : ''
+        src={`//codepen.io/team/codepen/embed${props_.clickToLoad ? '/preview' : ''}/${
+          props_.codePenId
+        }?height=265&theme-id=${props_.theme}&default-tab=${props_.tabs.toString()}${
+          props_.editable ? '&editable=true' : ''
         }`}
         allowfullscreen
       />

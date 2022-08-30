@@ -1,30 +1,29 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { handleTwttrLoad } from './utilities';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type TwitterHashtagButtonProperties = {
+export type TwitterHashtagButtonProps = {
   /** Twitter hashtag */
   hashtag: string;
   /** The size of the button */
   size?: 'large' | 'small';
 };
 
-export const TwitterHashtagButton = (properties: TwitterHashtagButtonProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const TwitterHashtagButton: Component<TwitterHashtagButtonProps> = (props) => {
+  const props_ = mergeProps(
     {
       size: 'small',
     },
-    properties
+    props
   );
   return (
     <GeneralObserver onEnter={handleTwttrLoad}>
       <a
-        {...createTestId('twitter-hashtag-button')}
-        href={`//twitter.com/intent/tweet?button_hashtag=${properties_.hashtag}&ref_src=twsrc%5Etfw`}
+        href={`//twitter.com/intent/tweet?button_hashtag=${props_.hashtag}&ref_src=twsrc%5Etfw`}
         class="twitter-hashtag-button"
-        data-size={properties_.size}
-      >{`Tweet #${properties_.hashtag}`}</a>
+        data-size={props_.size}
+      >{`Tweet #${props_.hashtag}`}</a>
     </GeneralObserver>
   );
 };

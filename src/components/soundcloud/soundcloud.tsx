@@ -1,8 +1,8 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type SoundCloudProperties = {
+export type SoundCloudProps = {
   /** SoundCloud link */
   soundCloudLink: string;
   /** Auto play audio */
@@ -17,8 +17,8 @@ export type SoundCloudProperties = {
   color?: string;
 };
 
-export const SoundCloud = (properties: SoundCloudProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const SoundCloud: Component<SoundCloudProps> = (props) => {
+  const props_ = mergeProps(
     {
       width: '100%',
       height: 'auto',
@@ -26,22 +26,21 @@ export const SoundCloud = (properties: SoundCloudProperties): JSX.Element => {
       visual: false,
       color: '23ff00f5',
     },
-    properties
+    props
   );
   return (
     <GeneralObserver>
       <iframe
-        {...createTestId('soundcloud')}
-        title={`sound-cloud-${properties_.soundCloudLink}`}
+        title={`sound-cloud-${props_.soundCloudLink}`}
         class="soundcloud"
-        width={properties_.width}
-        height={properties_.height}
+        width={props_.width}
+        height={props_.height}
         allow="autoplay"
         src={`//w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/${
-          properties_.soundCloudLink
+          props_.soundCloudLink
         }&color=%23${
-          properties_.color
-        }&auto_play=${properties_.autoPlay.toString()}&visual=${properties_.visual.toString()}`}
+          props_.color
+        }&auto_play=${props_.autoPlay.toString()}&visual=${props_.visual.toString()}`}
       />
     </GeneralObserver>
   );

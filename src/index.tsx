@@ -32,3 +32,41 @@ export { Whimsical } from './components/whimsical';
 export { Wikipedia } from './components/wikipedia';
 export { Wistia } from './components/wistia';
 export { YouTube } from './components/youtube';
+export type { AirtableBaseProps, AirtableFormProps } from './components/airtable';
+export type { BuzzsproutProps } from './components/buzzsprout';
+export type { CinnamonProps } from './components/cinnamon';
+export type { CodePenProps } from './components/codepen';
+export type { CodeSandboxProps } from './components/codesandbox';
+export type { EggheadLessonProps } from './components/egghead';
+export type { FigmaProps } from './components/figma';
+export type { FlickrProps } from './components/flickr';
+export type { GistProps } from './components/gist';
+export type { InstagramProps } from './components/instagram';
+export type { LbryProps } from './components/lbry';
+export type { LinkedInBadgeProps } from './components/linkedin';
+export type { ListenNotesEpisodeProps } from './components/listennotes';
+export type {
+  PinProps,
+  PinterestBoardProps,
+  PinterestFollowButtonProps,
+} from './components/pinterest';
+export type { SimplecastEpisodeProps } from './components/simplecast';
+export type { SnackProps } from './components/snack';
+export type { SoundCloudProps } from './components/soundcloud';
+export type { SpotifyProps } from './components/spotify';
+export type { StravaProps } from './components/strava';
+export type { TikTokProps } from './components/tiktok';
+export type { TwitchProps } from './components/twitch';
+export type {
+  TweetProps,
+  TwitterFollowButtonProps,
+  TwitterHashtagButtonProps,
+  TwitterListProps,
+  TwitterMentionButtonProps,
+  TwitterTimelineProps,
+} from './components/twitter';
+export type { VimeoProps } from './components/vimeo';
+export type { WhimsicalProps } from './components/whimsical';
+export type { WikipediaProps } from './components/wikipedia';
+export type { WistiaProps } from './components/wistia';
+export type { YouTubeProps } from './components/youtube';

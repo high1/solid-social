@@ -1,8 +1,8 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type AirtableBaseProperties = {
+export type AirtableBaseProps = {
   /** Airtable Base ID */
   airtableBaseId: string;
   /** Layout type */
@@ -11,24 +11,23 @@ export type AirtableBaseProperties = {
   viewControls?: 'on' | 'off';
 };
 
-export const AirtableBase = (properties: AirtableBaseProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const AirtableBase: Component<AirtableBaseProps> = (props) => {
+  const props_ = mergeProps(
     {
       layout: '',
       viewControls: 'on',
     },
-    properties
+    props
   );
   return (
     <GeneralObserver>
       <div class="airtable-base-solid-social" style={{ position: 'relative' }}>
         <iframe
-          {...createTestId('airtable-base')}
           class="airtable-base"
-          title={`airtable-${properties_.airtableBaseId}`}
-          src={`//airtable.com/embed/${properties_.airtableBaseId}?backgroundColor=green&${
-            !properties_.layout ? `` : `layout=${properties_.layout}&`
-          }viewControls=${properties_.viewControls}`}
+          title={`airtable-${props_.airtableBaseId}`}
+          src={`//airtable.com/embed/${props_.airtableBaseId}?backgroundColor=green&${
+            !props_.layout ? `` : `layout=${props_.layout}&`
+          }viewControls=${props_.viewControls}`}
           width="100%"
           height="533"
           style={{ background: 'transparent', border: '1px solid #ccc' }}

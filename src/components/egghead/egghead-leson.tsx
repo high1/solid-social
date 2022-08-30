@@ -1,13 +1,13 @@
-import { JSX } from 'solid-js';
-import { createTestId, getPadding } from '../../utilities';
+import { getPadding } from '../../utilities';
 import { GeneralObserver } from '../general-observer';
+import type { Component } from 'solid-js';
 
-export type EggheadLessonProperties = {
+export type EggheadLessonProps = {
   /** Egghead lesson */
   lessonId: string;
 };
 
-export const EggheadLesson = (properties: EggheadLessonProperties): JSX.Element => (
+export const EggheadLesson: Component<EggheadLessonProps> = (props) => (
   <GeneralObserver>
     <div
       class="egghead-lesson-solid-social"
@@ -18,10 +18,9 @@ export const EggheadLesson = (properties: EggheadLessonProperties): JSX.Element 
       }}
     >
       <iframe
-        {...createTestId('egghead-lesson')}
         class="egghead-lesson"
-        title={`egghead-${properties.lessonId}`}
-        src={`//egghead.io/lessons/${properties.lessonId}/embed`}
+        title={`egghead-${props.lessonId}`}
+        src={`//egghead.io/lessons/${props.lessonId}/embed`}
         allow="autoplay; fullscreen"
         style={{
           position: 'absolute',

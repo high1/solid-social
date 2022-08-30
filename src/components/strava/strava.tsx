@@ -1,34 +1,32 @@
-import { JSX } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type StravaProperties = {
+export type StravaProps = {
   /** The Strava activityId */
   activityId: string;
 };
 
-export const Strava = (properties: StravaProperties): JSX.Element => (
+export const Strava: Component<StravaProps> = (props) => (
   <GeneralObserver>
     <div
-      {...createTestId('strava')}
       class="strava-solid-social"
       style={{
         position: 'relative',
         height: '350px',
-        maxWidth: '568px',
+        'max-width': '568px',
         width: '100%',
         overflow: 'auto',
       }}
     >
       <iframe
-        title={`strava-${properties.activityId}`}
+        title={`strava-${props.activityId}`}
         class="strava"
         height="100%"
         width="100%"
         style={{
-          minWidth: '380px',
+          'min-width': '380px',
         }}
-        src={`//www.strava.com/activities/${properties.activityId}`}
+        src={`//www.strava.com/activities/${props.activityId}`}
       />
     </div>
   </GeneralObserver>

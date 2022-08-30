@@ -1,8 +1,8 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type SpotifyProperties = {
+export type SpotifyProps = {
   /** Spotify link */
   spotifyLink: string;
   /** Width for the iFrame */
@@ -11,23 +11,22 @@ export type SpotifyProperties = {
   height?: number | string;
 };
 
-export const Spotify = (properties: SpotifyProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const Spotify: Component<SpotifyProps> = (props) => {
+  const props_ = mergeProps(
     {
       width: 320,
       height: 380,
     },
-    properties
+    props
   );
   return (
     <GeneralObserver>
       <iframe
-        {...createTestId('spotify')}
-        title={`spotify-${properties_.spotifyLink}`}
+        title={`spotify-${props_.spotifyLink}`}
         class="spotify"
-        src={`//open.spotify.com/embed/${properties.spotifyLink}`}
-        width={properties_.width}
-        height={properties_.height}
+        src={`//open.spotify.com/embed/${props.spotifyLink}`}
+        width={props_.width}
+        height={props_.height}
         allow="encrypted-media"
       />
     </GeneralObserver>

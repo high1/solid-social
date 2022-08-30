@@ -14,7 +14,6 @@ const twttrClasses = [
 const twttrLoad = (): void =>
   document
     .querySelectorAll(twttrClasses)
-    // eslint-disable-next-line unicorn/no-array-for-each
     .forEach((element) => void window.twttr?.widgets?.load?.(element));
 
 export const handleTwttrLoad = (): void => {
@@ -31,5 +30,5 @@ export const handleTwttrUpdate = (
 ): void => {
   const tweet = document.querySelector<HTMLIFrameElement>(targetElement);
   const source = tweet?.getAttribute('src');
-  if (source) tweet?.setAttribute('src', source.replace(/theme=.*?&/, `theme=${theme}&`));
+  if (source) tweet?.setAttribute('src', source.replace(/theme=([^&]*)/, `theme=${theme}`));
 };

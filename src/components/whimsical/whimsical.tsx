@@ -1,9 +1,9 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
 import { getPadding } from './utilities';
+import type { Component } from 'solid-js';
 
-export type WhimsicalProperties = {
+export type WhimsicalProps = {
   /**
    * Whimsical id. Ex:
    * - given a public URL: //whimsical.com/Py4kdjbPzFpRoAPMbUxmaN
@@ -17,28 +17,27 @@ export type WhimsicalProperties = {
   aspectRatio?: string;
 };
 
-export const Whimsical = (properties: WhimsicalProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const Whimsical: Component<WhimsicalProps> = (props) => {
+  const props_ = mergeProps(
     {
       aspectRatio: '1:1',
     },
-    properties
+    props
   );
   return (
     <GeneralObserver>
       <div
-        {...createTestId('whimsical')}
         class="whimsical-solid-social"
         style={{
           position: 'relative',
           width: '100%',
-          ...getPadding(properties_.aspectRatio),
+          ...getPadding(props_.aspectRatio),
         }}
       >
         <iframe
-          title={`whimsical-${properties_.diagramId}`}
+          title={`whimsical-${props_.diagramId}`}
           class="whimsical"
-          src={`//whimsical.com/embed/${properties_.diagramId}`}
+          src={`//whimsical.com/embed/${props_.diagramId}`}
           allowfullscreen
           style={{
             position: 'absolute',

@@ -28,11 +28,3 @@ export const createStyleSheet = (href: string): void => {
 
   document.querySelectorAll(`head`)[0].append(link);
 };
-
-export const createTestId = (
-  id: string
-): {
-  'data-testid'?: string;
-} => ({
-  ...('solid-social-test-mode' && { 'data-testid': id }),
-});

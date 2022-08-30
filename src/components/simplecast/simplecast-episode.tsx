@@ -1,20 +1,20 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type SimplecastEpisodeProperties = {
+export type SimplecastEpisodeProps = {
   /** Simplecast Episode */
   episodeId: string;
   /** Color theme of the Player */
   theme?: `light` | `dark`;
 };
 
-export const SimplecastEpisode = (properties: SimplecastEpisodeProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const SimplecastEpisode: Component<SimplecastEpisodeProps> = (props) => {
+  const props_ = mergeProps(
     {
       theme: `light`,
     },
-    properties
+    props
   );
   return (
     <GeneralObserver>
@@ -27,11 +27,10 @@ export const SimplecastEpisode = (properties: SimplecastEpisodeProperties): JSX.
         }}
       >
         <iframe
-          {...createTestId('simplecast-episode')}
           class="simplecast-episode"
-          title={`simplecast-${properties_.episodeId}`}
-          src={`//player.simplecast.com/${properties_.episodeId}${
-            properties_.theme === `dark` ? `?dark=true` : ``
+          title={`simplecast-${props_.episodeId}`}
+          src={`//player.simplecast.com/${props_.episodeId}${
+            props_.theme === `dark` ? `?dark=true` : ``
           }`}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore

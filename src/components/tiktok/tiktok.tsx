@@ -1,23 +1,21 @@
-import { JSX } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { handleTikTokLoad } from './utilities';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type TikTokProperties = {
+export type TikTokProps = {
   /** TikTok id */
   tikTokId: string;
 };
 
-export const TikTok = (properties: TikTokProperties): JSX.Element => (
+export const TikTok: Component<TikTokProps> = (props) => (
   <GeneralObserver onEnter={handleTikTokLoad}>
     <blockquote
-      {...createTestId('tiktok')}
       class="tiktok"
-      cite={`//www.tiktok.com/${properties.tikTokId}`}
-      data-video-id={properties.tikTokId.split('/').pop()}
+      cite={`//www.tiktok.com/${props.tikTokId}`}
+      data-video-id={props.tikTokId.split('/').pop()}
     >
       <section>
-        <a href={`//tiktok.com/${properties.tikTokId}`}>{!window.tiktok && ''}</a>
+        <a href={`//tiktok.com/${props.tikTokId}`}>{!window.tiktok && ''}</a>
       </section>
     </blockquote>
   </GeneralObserver>

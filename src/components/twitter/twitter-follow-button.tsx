@@ -1,9 +1,9 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { handleTwttrLoad } from './utilities';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type TwitterFollowButtonProperties = {
+export type TwitterFollowButtonProps = {
   /** Twitter username */
   username: string;
   /** Show the follower count */
@@ -14,25 +14,24 @@ export type TwitterFollowButtonProperties = {
   size?: 'large' | 'small';
 };
 
-export const TwitterFollowButton = (properties: TwitterFollowButtonProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const TwitterFollowButton: Component<TwitterFollowButtonProps> = (props) => {
+  const props_ = mergeProps(
     {
       showFollowers: false,
       showUsername: true,
       size: 'small',
     },
-    properties
+    props
   );
   return (
     <GeneralObserver onEnter={handleTwttrLoad}>
       <a
-        {...createTestId('twitter-follow-button')}
-        href={`//twitter.com/${properties_.username}?ref_src=twsrc%5Etfw`}
+        href={`//twitter.com/${props_.username}?ref_src=twsrc%5Etfw`}
         class="twitter-follow-button"
-        data-show-count={properties_.showFollowers}
-        data-show-screen-name={properties_.showUsername}
-        data-size={properties_.size}
-      >{`Follow @${properties_.username}`}</a>
+        data-show-count={props_.showFollowers}
+        data-show-screen-name={props_.showUsername}
+        data-size={props_.size}
+      >{`Follow @${props_.username}`}</a>
     </GeneralObserver>
   );
 };

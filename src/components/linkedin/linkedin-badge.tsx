@@ -1,9 +1,9 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { handleLinkedInLoad } from './utilities';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type LinkedInProperties = {
+export type LinkedInBadgeProps = {
   /** LinkedIn username */
   username: string;
   /** The type of badge */
@@ -16,31 +16,30 @@ export type LinkedInProperties = {
   locale?: string;
 };
 
-export const LinkedInBadge = (properties: LinkedInProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const LinkedInBadge: Component<LinkedInBadgeProps> = (props) => {
+  const props_ = mergeProps(
     {
       badgeType: 'vertical',
       badgeSize: 'medium',
       theme: 'light',
       locale: 'en_US',
     },
-    properties
+    props
   );
   return (
     <GeneralObserver onEnter={handleLinkedInLoad}>
       <div
-        {...createTestId('linkedin-badge')}
         class="LI-profile-badge linkedin-badge"
         data-version="v1"
-        data-size={properties_.badgeSize}
-        data-locale={properties_.locale}
-        data-type={properties_.badgeType}
-        data-theme={properties_.theme}
-        data-vanity={properties_.username}
+        data-size={props_.badgeSize}
+        data-locale={props_.locale}
+        data-type={props_.badgeType}
+        data-theme={props_.theme}
+        data-vanity={props_.username}
       >
         <a
           class="LI-simple-link"
-          href={`//uk.linkedin.com/in/${properties_.username}?trk=profile-badge`}
+          href={`//uk.linkedin.com/in/${props_.username}?trk=profile-badge`}
         >
           Loading
         </a>

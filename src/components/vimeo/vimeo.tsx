@@ -1,8 +1,9 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId, getPadding } from '../../utilities';
+import { getPadding } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type VimeoProperties = {
+export type VimeoProps = {
   /** Vimeo id */
   vimeoId: string;
   /** Skip to a time in the video */
@@ -15,18 +16,17 @@ export type VimeoProperties = {
   autoPlay?: boolean;
 };
 
-export const Vimeo = (properties: VimeoProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const Vimeo: Component<VimeoProps> = (props) => {
+  const props_ = mergeProps(
     {
       autoPlay: false,
       skipTo: { h: 0, m: 0, s: 0 },
     },
-    properties
+    props
   );
   return (
     <GeneralObserver>
       <div
-        {...createTestId('vimeo')}
         class="vimeo-solid-social"
         style={{
           position: 'relative',
@@ -35,13 +35,13 @@ export const Vimeo = (properties: VimeoProperties): JSX.Element => {
         }}
       >
         <iframe
-          title={`vimeo-${properties_.vimeoId}`}
+          title={`vimeo-${props_.vimeoId}`}
           class="vimeo"
           src={`//player.vimeo.com/video/${
-            properties_.vimeoId
-          }?autoplay=${properties_.autoPlay.toString()}#t=${properties_.skipTo.h || 0}h${
-            properties_.skipTo.m
-          }m${properties_.skipTo.s}s`}
+            props_.vimeoId
+          }?autoplay=${props_.autoPlay.toString()}#t=${props_.skipTo.h || 0}h${props_.skipTo.m}m${
+            props_.skipTo.s
+          }s`}
           allow="autoplay; fullscreen"
           style={{
             position: 'absolute',

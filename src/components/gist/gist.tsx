@@ -1,10 +1,11 @@
-import { JSX, onMount, Show } from 'solid-js';
+import { createMemo, onMount, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { createScriptLoader } from '@solid-primitives/script-loader';
 import { GeneralObserver } from '../general-observer';
-import { createStyleSheet, createTestId } from '../../utilities';
+import { createStyleSheet } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type GistProperties = {
+export type GistProps = {
   /** Gist link */
   gistLink: string;
 };
@@ -18,7 +19,7 @@ type GistState = {
   file?: string;
 };
 
-export const Gist = (properties: GistProperties): JSX.Element => {
+export const Gist: Component<GistProps> = (props) => {
   const [gistResponse, setGistResponse] = createStore<{ gist: GistState }>({
     gist: {
       isLoading: true,
@@ -27,13 +28,15 @@ export const Gist = (properties: GistProperties): JSX.Element => {
     },
   });
 
-  const gistId = properties.gistLink.split('/')[1];
-  const gistEmbedScript = `//gist.github.com/${properties.gistLink}.json?callback=gist_callback_${gistId}`;
+  const gistId = createMemo(() => props.gistLink.split('/')[1]);
+  const gistEmbedScript = createMemo(
+    () => `//gist.github.com/${props.gistLink}.json?callback=gist_callback_${gistId()}`
+  );
 
   onMount(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    window[`gist_callback_${gistId}`] = (gist: {
+    window[`gist_callback_${gistId()}`] = (gist: {
       div: string;
       files: string[];
       stylesheet: string;
@@ -53,7 +56,8 @@ export const Gist = (properties: GistProperties): JSX.Element => {
   return (
     <GeneralObserver>
       <Show when={!gistResponse.gist.isLoading}>
-        <div {...createTestId('gist')} class="gist" innerHTML={gistResponse.gist.div} />
+        {/* eslint-disable-next-line solid/no-innerhtml */}
+        <div class="gist" innerHTML={gistResponse.gist.div} />
       </Show>
     </GeneralObserver>
   );

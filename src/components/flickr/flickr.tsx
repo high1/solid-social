@@ -1,27 +1,20 @@
-import { JSX } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
 import { handleFlickrLoad } from './utilities';
-import { createTestId } from '../../utilities';
+import type { Component } from 'solid-js';
 
-export type FlickrProperties = {
+export type FlickrProps = {
   /** Flickr image link*/
   flickrLink: string;
 };
 
-export const Flickr = (properties: FlickrProperties): JSX.Element => (
+export const Flickr: Component<FlickrProps> = (props) => (
   <GeneralObserver onEnter={handleFlickrLoad}>
-    <span
-      {...createTestId('flickr')}
-      class="flickr"
-      data-flickr-embed="true"
-      data-header="true"
-      data-footer="true"
-    >
+    <span class="flickr" data-flickr-embed="true" data-header="true" data-footer="true">
       <img
-        src={`//live.staticflickr.com/${properties.flickrLink}`}
+        src={`//live.staticflickr.com/${props.flickrLink}`}
         width="100%"
         height="auto"
-        alt={properties.flickrLink}
+        alt={props.flickrLink}
       />
     </span>
   </GeneralObserver>

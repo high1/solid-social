@@ -1,8 +1,8 @@
-import { createSignal, getOwner, mergeProps, ParentComponent, runWithOwner, Show } from 'solid-js';
+import { createMemo, createSignal, getOwner, mergeProps, runWithOwner, Show } from 'solid-js';
 import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
-import { createTestId } from '../../utilities';
+import type { ParentComponent } from 'solid-js';
 
-type GeneralObserverProperties = {
+export type GeneralObserverProps = {
   /** Fires when IntersectionObserver enters viewport */
   onEnter?: (id?: string) => void;
   /** The height of the placeholder div before the component renders in */
@@ -11,18 +11,16 @@ type GeneralObserverProperties = {
 
 export type HTMLEventName = keyof HTMLElementEventMap;
 
-export const GeneralObserver: ParentComponent<GeneralObserverProperties> = (properties) => {
-  const properties_ = mergeProps({ height: 0 }, properties);
+export const GeneralObserver: ParentComponent<GeneralObserverProps> = (props) => {
+  const props_ = mergeProps({ height: 0 }, props);
   const owner = getOwner();
   let observerReference!: HTMLDivElement;
   const [isVisible, setVisible] = createSignal(false);
+  const onEnter = createMemo(() => props_.onEnter?.());
   createIntersectionObserver(
     () => [observerReference],
     ([entry]) =>
-      entry.intersectionRatio > 0 &&
-      setVisible(true) &&
-      owner &&
-      runWithOwner(owner, () => properties_.onEnter?.()),
+      entry.intersectionRatio > 0 && setVisible(true) && owner && runWithOwner(owner, onEnter),
     {
       root: undefined,
       rootMargin: '400px',
@@ -31,21 +29,20 @@ export const GeneralObserver: ParentComponent<GeneralObserverProperties> = (prop
   );
 
   return (
-    <div
-      ref={observerReference}
-      class={`observer-solid-social`}
-      {...createTestId('general-observer')}
-    >
+    <div ref={observerReference} class={`observer-solid-social`}>
       <Show
         when={isVisible()}
         fallback={
           <div
             class="placeholder-solid-social"
-            style={{ height: properties_.height, width: '100%' }}
+            style={{
+              width: '100%',
+              ...(props_.height && { height: `${props_.height}px` }),
+            }}
           />
         }
       >
-        {properties_.children}
+        {props_.children}
       </Show>
     </div>
   );

@@ -1,9 +1,10 @@
-import { JSX, mergeProps } from 'solid-js';
+import { mergeProps } from 'solid-js';
 import { GeneralObserver } from '../general-observer';
-import { createTestId, getPadding } from '../../utilities';
+import { getPadding } from '../../utilities';
 import { handleWistiaLoad } from './utilities';
+import type { Component } from 'solid-js';
 
-export type WistiaProperties = {
+export type WistiaProps = {
   /** Video ID, extracted from Wistia URL. */
   videoId: string;
   /** Enable player's "full screen" control. */
@@ -18,8 +19,8 @@ export type WistiaProperties = {
   autoPlay?: boolean;
 };
 
-export const Wistia = (properties: WistiaProperties): JSX.Element => {
-  const properties_ = mergeProps(
+export const Wistia: Component<WistiaProps> = (props) => {
+  const props_ = mergeProps(
     {
       allowfullscreen: true,
       aspectRatio: '16:9',
@@ -27,7 +28,7 @@ export const Wistia = (properties: WistiaProperties): JSX.Element => {
       height: '100%',
       autoPlay: false,
     },
-    properties
+    props
   );
 
   return (
@@ -37,25 +38,24 @@ export const Wistia = (properties: WistiaProperties): JSX.Element => {
         style={{
           position: 'relative',
           width: '100%',
-          ...getPadding(properties_.aspectRatio),
+          ...getPadding(props_.aspectRatio),
         }}
       >
         <iframe
-          {...createTestId('wistia')}
-          title={`wistia-${properties_.videoId}`}
+          title={`wistia-${props_.videoId}`}
           class="wistia-solid-social"
-          src={`//fast.wistia.net/embed/iframe/${properties_.videoId}${
-            properties.autoPlay ? '?autoPlay=true' : ''
+          src={`//fast.wistia.net/embed/iframe/${props_.videoId}${
+            props.autoPlay ? '?autoPlay=true' : ''
           }`}
-          allow={`autoplay; ${properties_.allowfullscreen ? 'fullscreen' : ''}`}
+          allow={`autoplay; ${props_.allowfullscreen ? 'fullscreen' : ''}`}
           style={{
             position: 'absolute',
             top: 0,
             left: 0,
-            width: properties_.width,
-            height: properties_.height,
+            width: props_.width,
+            height: props_.height,
           }}
-        ></iframe>
+        />
       </div>
     </GeneralObserver>
   );
