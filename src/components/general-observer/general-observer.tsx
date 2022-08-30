@@ -1,4 +1,4 @@
-import { createMemo, createSignal, getOwner, mergeProps, runWithOwner, Show } from 'solid-js';
+import { createSignal, getOwner, mergeProps, runWithOwner, Show } from 'solid-js';
 import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
 import type { ParentComponent } from 'solid-js';
 
@@ -16,11 +16,13 @@ export const GeneralObserver: ParentComponent<GeneralObserverProps> = (props) =>
   const owner = getOwner();
   let observerReference!: HTMLDivElement;
   const [isVisible, setVisible] = createSignal(false);
-  const onEnter = createMemo(() => props_.onEnter?.());
   createIntersectionObserver(
     () => [observerReference],
     ([entry]) =>
-      entry.intersectionRatio > 0 && setVisible(true) && owner && runWithOwner(owner, onEnter),
+      entry.intersectionRatio > 0 &&
+      setVisible(true) &&
+      owner &&
+      runWithOwner(owner, () => props.onEnter?.()),
     {
       root: undefined,
       rootMargin: '400px',

@@ -7,9 +7,7 @@ const LIRenderAll = (): void | unknown =>
   window.LI && typeof window.LIRenderAll === 'function' && window.LIRenderAll();
 
 export const handleLinkedInLoad = (): void => {
-  if (document.querySelector(linkedInClasses) && !(window.LI && window.LIRenderAll)) {
+  if (document.querySelector(linkedInClasses) && !(window.LI && window.LIRenderAll))
     createScriptLoader({ src: linkedInBadgesUrl });
-    return;
-  }
-  LIRenderAll();
+  else LIRenderAll();
 };

@@ -17,11 +17,9 @@ const twttrLoad = (): void =>
     .forEach((element) => void window.twttr?.widgets?.load?.(element));
 
 export const handleTwttrLoad = (): void => {
-  if (document.querySelector(twttrClasses) && !window.twttr) {
+  if (document.querySelector(twttrClasses) && !window.twttr)
     createScriptLoader({ src: '//platform.twitter.com/widgets.js' });
-    return;
-  }
-  twttrLoad();
+  else twttrLoad();
 };
 
 export const handleTwttrUpdate = (

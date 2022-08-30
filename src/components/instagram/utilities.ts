@@ -5,9 +5,7 @@ export const instgrmClasses = ['.instagram-media', '.instagram-media-rendered'].
 const instgrmProcess = (): void => window.instgrm?.Embeds.process();
 
 export const handleInstagrmLoad = (): void => {
-  if (document.querySelector(instgrmClasses) && !window.instgrm) {
+  if (document.querySelector(instgrmClasses) && !window.instgrm)
     createScriptLoader({ src: '//www.instagram.com/embed.js' });
-    return;
-  }
-  instgrmProcess();
+  else instgrmProcess();
 };
