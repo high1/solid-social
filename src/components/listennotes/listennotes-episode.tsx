@@ -34,7 +34,7 @@ export const ListenNotesEpisode: Component<ListenNotesEpisodeProps> = (props) =>
           title={`listennotes-${props.episodeId}`}
           src={`//www.listennotes.com/podcasts/${props.episodeId}/embed/`}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
+          // @ts-expect-error
           frameborder={0}
           scrolling="no"
           loading="lazy"

@@ -33,7 +33,7 @@ export const SimplecastEpisode: Component<SimplecastEpisodeProps> = (props) => {
             props_.theme === `dark` ? `?dark=true` : ``
           }`}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
+          // @ts-expect-error
           seamless
           style={{
             position: 'absolute',

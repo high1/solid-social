@@ -37,7 +37,7 @@ export const Twitch: Component<TwitchProps> = (props) => {
   const title = createMemo(() => (props_.twitchId ? `twitch-${props_.twitchId}` : `twitch`));
   const baseUrl = createMemo(
     () =>
-      `//player.twitch.tv/?autoplay=${props_.autoPlay.toString()}&t=${props_.skipTo.h || 0}h${
+      `//player.twitch.tv/?autoplay=${props_.autoPlay.toString()}&t=${props_.skipTo.h ?? 0}h${
         props_.skipTo.m
       }m${props_.skipTo.s}s&parent=${props_.parent}`
   );

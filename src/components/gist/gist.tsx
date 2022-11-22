@@ -35,7 +35,7 @@ export const Gist: Component<GistProps> = (props) => {
 
   onMount(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     window[`gist_callback_${gistId()}`] = (gist: {
       div: string;
       files: string[];

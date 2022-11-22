@@ -1,4 +1,4 @@
-import { createSignal, getOwner, mergeProps, runWithOwner, Show } from 'solid-js';
+import { createSignal, createEffect, getOwner, mergeProps, on, runWithOwner, Show } from 'solid-js';
 import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
 import type { ParentComponent } from 'solid-js';
 
@@ -14,24 +14,31 @@ export type HTMLEventName = keyof HTMLElementEventMap;
 export const GeneralObserver: ParentComponent<GeneralObserverProps> = (props) => {
   const props_ = mergeProps({ height: 0 }, props);
   const owner = getOwner();
-  let observerReference!: HTMLDivElement;
+  const [observerReference, setObserverReference] = createSignal<HTMLDivElement>();
   const [isVisible, setVisible] = createSignal(false);
-  createIntersectionObserver(
-    () => [observerReference],
-    ([entry]) =>
-      entry.intersectionRatio > 0 &&
-      setVisible(true) &&
-      owner &&
-      runWithOwner(owner, () => props.onEnter?.()),
-    {
-      root: undefined,
-      rootMargin: '400px',
-      threshold: 0,
-    }
+  createEffect(
+    on(observerReference, () => {
+      const element = observerReference();
+      element &&
+        createIntersectionObserver(
+          () => [element],
+          ([entry]) => {
+            if (entry.intersectionRatio > 0 && owner) {
+              setVisible(true);
+              runWithOwner(owner, () => props.onEnter?.());
+            }
+          },
+          {
+            root: undefined,
+            rootMargin: '400px',
+            threshold: 0,
+          }
+        );
+    })
   );
 
   return (
-    <div ref={observerReference} class={`observer-solid-social`}>
+    <div ref={setObserverReference} class={`observer-solid-social`}>
       <Show
         when={isVisible()}
         fallback={

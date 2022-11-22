@@ -14,7 +14,7 @@ const twttrClasses = [
 const twttrLoad = (): void =>
   document
     .querySelectorAll(twttrClasses)
-    .forEach((element) => void window.twttr?.widgets?.load?.(element));
+    .forEach((element) => void window.twttr?.widgets.load(element));
 
 export const handleTwttrLoad = (): void => {
   if (document.querySelector(twttrClasses) && !window.twttr)

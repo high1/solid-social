@@ -39,7 +39,7 @@ export const Vimeo: Component<VimeoProps> = (props) => {
           class="vimeo"
           src={`//player.vimeo.com/video/${
             props_.vimeoId
-          }?autoplay=${props_.autoPlay.toString()}#t=${props_.skipTo.h || 0}h${props_.skipTo.m}m${
+          }?autoplay=${props_.autoPlay.toString()}#t=${props_.skipTo.h ?? 0}h${props_.skipTo.m}m${
             props_.skipTo.s
           }s`}
           allow="autoplay; fullscreen"

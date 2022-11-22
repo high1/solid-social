@@ -3,7 +3,7 @@ import { GeneralObserver } from '../general-observer';
 import { getPadding } from '../../utilities';
 import type { Component } from 'solid-js';
 
-export interface YouTubeProps {
+export type YouTubeProps = {
   /** YouTube id */
   youTubeId?: string;
   /** YouTube Playlist id */
@@ -20,7 +20,7 @@ export interface YouTubeProps {
   autoPlay?: boolean;
   /** No Cookie option */
   noCookie?: boolean;
-}
+};
 
 export const YouTube: Component<YouTubeProps> = (props) => {
   const props_ = mergeProps(
@@ -35,7 +35,7 @@ export const YouTube: Component<YouTubeProps> = (props) => {
 
   const startTime = createMemo(() => {
     const { h, m, s } = props_.skipTo;
-    return (h || 0) * 60 + m * 60 + s;
+    return (h ?? 0) * 60 + m * 60 + s;
   });
 
   const source = createMemo(

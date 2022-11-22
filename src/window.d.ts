@@ -1,8 +1,9 @@
 export {};
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Window {
-    twttr: {
+    twttr?: {
       ready: () => Promise<void>;
       widgets: {
         createTweet: (
@@ -13,14 +14,14 @@ declare global {
         load: (element: Element | NodeListOf<Element> | null) => Promise<void>;
       };
     };
-    instgrm: {
+    instgrm?: {
       Embeds: {
         process: () => void;
       };
     };
-    LI: unknown;
-    LIRenderAll: () => void;
-    PinUtils: {
+    LI?: unknown;
+    LIRenderAll?: () => void;
+    PinUtils?: {
       build: () => void;
     };
     tiktok: unknown;
