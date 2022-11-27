@@ -17,7 +17,7 @@ specifiers:
   lint-staged: ^13.0.4
   prettier: ^2.8.0
   rollup: ^3.5.0
-  rollup-preset-solid: ^2.0.0
+  rollup-preset-solid: ^2.0.1
   solid-js: ^1.6.2
   typescript: ^4.9.3
 
@@ -40,7 +40,7 @@ devDependencies:
   lint-staged: 13.0.4
   prettier: 2.8.0
   rollup: 3.5.0
-  rollup-preset-solid: 2.0.0
+  rollup-preset-solid: 2.0.1
   solid-js: 1.6.2
   typescript: 4.9.3
 
@@ -4897,10 +4897,10 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-preset-solid/2.0.0:
+  /rollup-preset-solid/2.0.1:
     resolution:
       {
-        integrity: sha512-8zU0krJQpgrQzsVPZp+65Cy+MqI3jWMEPZud1jatd6jkaODy04eY9D2ytkPjhaebIIf642s2amol0zhlqGpdEg==,
+        integrity: sha512-CPJn3SqADlIxhAW3jwZuAFRyZcz7HPeUAz4f+6BzulxHnK4v6tgoTbMvk8vEsfsvHwiTmX93KHIKdf79aTdVSA==,
       }
     dependencies:
       '@babel/core': 7.20.2
