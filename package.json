@@ -1,6 +1,6 @@
 {
   "name": "solid-social",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "",
   "type": "module",
   "source": "./src/index.ts",
