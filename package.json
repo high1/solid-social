@@ -3,12 +3,12 @@
   "version": "0.9.3",
   "description": "",
   "type": "module",
-  "main": "dist/index/index.js",
+  "main": "dist/index/index.module.js",
   "types": "dist/index/index.d.ts",
   "exports": {
     ".": {
-      "solid": "./dist/index/index.js",
-      "default": "./dist/index/index.js"
+      "solid": "./dist/index/index.module.js",
+      "default": "./dist/index/index.module.js"
     }
   },
   "files": [
