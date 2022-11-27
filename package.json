@@ -1,6 +1,6 @@
 {
   "name": "solid-social",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "",
   "type": "module",
   "main": "dist/index/index.module.js",
