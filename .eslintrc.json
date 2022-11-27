@@ -1,35 +1,20 @@
 {
   "root": true,
-  "env": {
-    "browser": true,
-    "es2022": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended"
-  ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "sourceType": "module"
-  },
-  "ignorePatterns": [
-    "node_modules",
-    "coverage",
-    "dist",
-    "mockServiceWorker.js"
-  ],
+  "ignorePatterns": ["node_modules", "dist", "!**/.*"],
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
+      "files": ["*.mjs"],
+      "env": {
+        "browser": true
+      },
+      "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -43,17 +28,12 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
-        "@typescript-eslint/explicit-function-return-type": [
-          "warn",
-          {
-            "allowExpressions": true
-          }
-        ],
         "@typescript-eslint/consistent-type-definitions": ["warn", "type"]
       },
       "parserOptions": {
         "project": "tsconfig.json",
         "sourceType": "module",
+        "ecmaVersion": "latest",
         "ecmaFeatures": {
           "jsx": true
         }
@@ -64,9 +44,26 @@
         }
       },
       "env": {
-        "es2022": true,
         "browser": true
       }
+    },
+    {
+      "files": ["*.json"],
+      "excludedFiles": [".eslintrc.json"],
+      "extends": [
+        "plugin:jsonc/recommended-with-json",
+        "plugin:jsonc/prettier",
+        "plugin:prettier/recommended"
+      ]
+    },
+    {
+      // jsonc
+      "files": [".eslintrc.json"],
+      "extends": [
+        "plugin:jsonc/recommended-with-jsonc",
+        "plugin:jsonc/prettier",
+        "plugin:prettier/recommended"
+      ]
     }
   ]
 }
