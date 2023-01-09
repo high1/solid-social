@@ -16,7 +16,7 @@ export const Spotify: Component<SpotifyProps> = (props) => {
   const props_ = mergeProps(
     {
       width: '100%',
-      height: 325,
+      height: 352,
     },
     props
   );
@@ -32,7 +32,7 @@ export const Spotify: Component<SpotifyProps> = (props) => {
         width={props_.width}
         height={props_.height}
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        style={{ 'border-radius': '14px' }}
+        style={{ 'border-radius': '12px' }}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         frameborder={0}
